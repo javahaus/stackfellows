@@ -47,11 +47,11 @@ Currently under development.
 
 ### Website Wireframe
 
-![Website Wireframe](JavaHaus-web-wireframe.jpg)
+![Website Wireframe](Imgs/JavaHaus-web-wireframe.jpg)
 
 ### Domain Modeling
 
-![Domain Architecture Design](JavaHaus-domain-model-architecture.jpg)
+![Domain Architecture Design](Imgs/JavaHaus-domain-model-architecture.jpg)
 
 ## The Team
 
