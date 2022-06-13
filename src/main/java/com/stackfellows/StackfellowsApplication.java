@@ -1,4 +1,4 @@
-package com.stackfellows.stackfellows;
+package com.stackfellows;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
