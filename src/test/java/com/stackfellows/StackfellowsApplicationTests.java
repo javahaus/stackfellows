@@ -1,4 +1,4 @@
-package com.stackfellows.stackfellows;
+package com.stackfellows;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

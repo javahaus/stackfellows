@@ -1,4 +1,4 @@
-package com.stackfellows.stackfellows.controllers;
+package com.stackfellows.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
