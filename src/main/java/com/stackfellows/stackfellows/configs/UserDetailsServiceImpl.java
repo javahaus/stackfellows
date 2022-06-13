@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
         @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            return stackFellowshipRepo.findByUsername(username);
+//            return stackFellowshipRepo.findByUsername(username);
+        return loadUserByUsername("empty");
         }
 }
