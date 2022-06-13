@@ -1,4 +1,4 @@
-package com.stackfellows.stackfellows.configs;
+package com.stackfellows.configs;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
