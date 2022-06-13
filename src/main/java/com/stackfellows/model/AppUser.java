@@ -10,7 +10,7 @@ public class AppUser {
     Long id;
 
     private String username;
-    private String password;
+    public String password;
 
 // For when we connect user to posts
 // @OneToMany(mappedBy = "appUser")
@@ -23,6 +23,9 @@ public class AppUser {
     public AppUser(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public AppUser(String username, String hashPass, String firstName, String lastName, String email, Boolean isAlum, String bio) {
     }
 
     public Long getId() {
