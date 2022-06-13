@@ -1,4 +1,4 @@
-package com.stackfellows.stackfellows.model;
+package com.stackfellows.model;
 
 import javax.persistence.*;
 
