@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,5 +9,17 @@
 </head>
 <body>
 <h1>Home</h1>
+
+<form action="/postquestions" method="post" >
+    <fieldset>
+        <legend>add Post</legend>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="body">Body</label>
+        <input type="text" name="body" id="body">
+        <input type="submit" value="submit">
+    </fieldset>
+</form>
+
 </body>
 </html>
