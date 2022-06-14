@@ -8,6 +8,21 @@
         <h2 th:text="${sessionUsername}"></h2>
             <p th:text="${postInfo.title}"></p>
             <p th:text="${postInfo.body}"></p>
+
+            <form action="/postComment" method="post">
+                <fieldset>
+                    <legend>Add a Comment</legend>
+                    <textarea rows="5" cols="40" name="body" id="body"> </textarea>
+
+                    <input type="hidden" th:value="${postInfo.id}" name="id" id="id" >
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+    <ul th:if="${!commentList.isEmpty()}" th:each="comment:${commentList}">
+        <li th:text="${comment.body}">
+<!--            <p th:text="comment.appUser.username"></p>-->
+        </li>
+    </ul>
     </body>
 
 </html>
