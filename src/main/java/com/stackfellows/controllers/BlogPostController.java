@@ -26,19 +26,26 @@ public class BlogPostController {
     @Autowired
     PostRepo postRepo;
 
+    //TODO: add comment list as attribute.
+    // create a comment controller - @postMapping (Comment Controller)
     @GetMapping("/blogpost/{id}")
     public String getPostPage(Principal p, Model m, @PathVariable Long id){
 
-        return "blogpost";
+        if(p != null) {
+            String username = p.getName();
+            m.addAttribute("sessionUsername", username);
+        }
+        Post post = postRepo.findById(id).orElseThrow();
+            m.addAttribute("postInfo", post);
+            return "blogpost";
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, String username){
+    public RedirectView postAQuestion(String title, String body, Principal p){
+        String username = p.getName();
         AppUser user = appUserRepo.findByUsername(username);
         Post newPost = new Post(title, body, user);
         postRepo.save(newPost);
-
-
 
         return new RedirectView("/blogpost/" + newPost.getId());
     }
