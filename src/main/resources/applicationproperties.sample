@@ -1,0 +1,7 @@
+spring.datasource.url=jdbc:postgresql://your_sql_server:sql_srvr_port/db_name
+spring.datasource.username=your_db_login
+spring.datasource.password=db_login_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.generate-ddl=true
+spring.mvc.hiddenmethod.filter.enabled=true
+server.error.whitelabel.enabled=false

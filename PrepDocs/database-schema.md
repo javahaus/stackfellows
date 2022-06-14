@@ -8,10 +8,16 @@ This is a living document until we deliver at the end of this sprint.
 
 ## Entities
 
-### User
+AppUser: Represents a registered user.
 
-### Post
+Post: Represents a Post to the "Question Blog" portion of the size. AppUser can make many of these.
 
-### Something...Of The Day
+Comment: Represents a Comment made on a Post. AppUser can make many of these. Posts might have zero to infinite number of theses. 
 
-![Database Schema Diagram]()
+## Data Relationships Design
+
+![Database Schema Diagram](../Imgs/JavaHaus-data-relationship-model.jpg)
+
+## CRUD Operations
+
+TBD
