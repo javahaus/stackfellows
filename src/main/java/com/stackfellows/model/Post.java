@@ -21,8 +21,9 @@ public class Post {
     @ManyToOne
     AppUser appUser;
 
+    //TODO:Connect
 //    @OneToMany(mappedBy = "post")
-//    List<Comment> userPosts;
+//    List<Comment> postComments;
 
 
     public Post(String title, String body, AppUser appUser) {

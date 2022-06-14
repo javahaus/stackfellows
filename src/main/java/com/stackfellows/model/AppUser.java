@@ -28,17 +28,14 @@ public class AppUser implements UserDetails {
      @OneToMany(mappedBy = "appUser")
      List<Post> userPosts;
 
+//     TODO: Connect
+//     @OneToMany(mappedBy = "appUser")
+//     List<Comment> userComments;
+
 
     public AppUser() {
     }
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "user_comments",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "comment_id")
-//    )
-//    Set<Comment> user;
 
     public AppUser(String username, String password, String firstName, String lastName, String email, boolean isAlum, String bio, String role) {
         this.username = username;
