@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -50,4 +51,12 @@ public class BlogPostController {
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
+
+    @PutMapping("/upvotePost")
+    public RedirectView upvotePost(Long id){
+        Post post = postRepo.findById(id).orElseThrow();
+        post.setVotes(post.getVotes() + 1);
+        postRepo.save(post);
+        return new RedirectView("/blogpost/" + post.getId());
+    }
 }

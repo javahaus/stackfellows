@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.security.Principal;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ProfileController {
         return "profile";
     }
 
-    @PostMapping("/updateAccount")
+    @PutMapping("/updateAccount")
     public String updateAccount(Principal p, Model m, String firstName, String lastName, String email, String bio, Boolean isAlum){
 
         return "/login";
