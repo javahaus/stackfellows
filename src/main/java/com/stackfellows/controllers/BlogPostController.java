@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -41,10 +43,35 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, Principal p){
+    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
+        StringBuilder bodyFullText = new StringBuilder();
+        bodyFullText.append(body);
         String username = p.getName();
         AppUser user = appUserRepo.findByUsername(username);
-        Post newPost = new Post(title, body, user);
+
+        try {
+            // https://www.baeldung.com/convert-string-to-input-stream
+            if (codesnippet.length() > 1) {
+                InputStream codesnipStream = new ByteArrayInputStream(codesnippet.getBytes());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(codesnipStream));
+                bodyFullText.append("/n");
+                bodyFullText.append("##### code #####");
+                bodyFullText.append("/n");
+
+                while (reader.ready()) {
+                    String codeline = codesnipStream.read();
+                    bodyFullText.append(codeline);
+                }
+
+                bodyFullText.append("/n");
+                bodyFullText.append("##### code #####");
+            }
+        } catch (IOException ioex) {
+            // add a logging function to catch this error
+            System.out.println("Exception thrown reading code snippet: " + ioex.getMessage());
+        }
+
+        Post newPost = new Post(title, bodyFullText.toString(), user);
         postRepo.save(newPost);
 
         return new RedirectView("/blogpost/" + newPost.getId());
