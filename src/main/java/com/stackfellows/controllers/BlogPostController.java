@@ -43,7 +43,6 @@ public class BlogPostController {
         Post post = postRepo.findById(id).orElseThrow();
             m.addAttribute("postInfo", post);
 
-//      Comment comment = commentRepo.findById(id);
         List<Comment> commentList = post.getPostComments();
             m.addAttribute("commentList", commentList);
 
@@ -66,6 +65,6 @@ public class BlogPostController {
         Post post = postRepo.findById(id).orElseThrow();
         post.setVotes(post.getVotes() + 1);
         postRepo.save(post);
-        return new RedirectView("/blogpost/" + post.getId());
+        return new RedirectView("/blogpost/" + id);
     }
 }

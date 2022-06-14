@@ -17,8 +17,9 @@
 <p th:text="${user.email}"></p>
 <p th:text="${user.bio}"></p>
 
-<ul th:each="post : ${postList}"></ul>
+<ul th:each="post : ${postList}">
     <li th:text="${post.title }"></li>
     <li th:text="${post.body }"></li>
+</ul>
 </body>
 </html>
