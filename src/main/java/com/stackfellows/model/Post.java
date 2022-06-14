@@ -21,8 +21,9 @@ public class Post {
     @ManyToOne
     AppUser appUser;
 
-//    @OneToMany(mappedBy = "post")
-//    List<Comment> userPosts;
+    //TODO:Connect
+    @OneToMany(mappedBy = "post")
+    List<Comment> postComments;
 
 
     public Post(String title, String body, AppUser appUser) {
@@ -85,5 +86,13 @@ public class Post {
 
     public void setAppUser(AppUser appUser) {
         this.appUser = appUser;
+    }
+
+    public List<Comment> getPostComments() {
+        return postComments;
+    }
+
+    public void setPostComments(List<Comment> postComments) {
+        this.postComments = postComments;
     }
 }

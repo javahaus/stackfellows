@@ -28,17 +28,14 @@ public class AppUser implements UserDetails {
      @OneToMany(mappedBy = "appUser")
      List<Post> userPosts;
 
+//     TODO: Connect
+     @OneToMany(mappedBy = "appUser")
+     List<Comment> userComments;
+
 
     public AppUser() {
     }
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "user_comments",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "comment_id")
-//    )
-//    Set<Comment> user;
 
     public AppUser(String username, String password, String firstName, String lastName, String email, boolean isAlum, String bio, String role) {
         this.username = username;
@@ -49,6 +46,16 @@ public class AppUser implements UserDetails {
         this.isAlum = isAlum;
         this.bio = bio;
         this.role = role;
+    }
+
+    public AppUser(String username, String hashPass, String firstName, String lastName, String email, Boolean isAlum, String bio) {
+        this.username = username;
+        this.password = hashPass;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.isAlum = isAlum;
+        this.bio = bio;
     }
 
     @Override
@@ -76,15 +83,7 @@ public class AppUser implements UserDetails {
         return null;
     }
 
-    public AppUser(String username, String hashPass, String firstName, String lastName, String email, Boolean isAlum, String bio) {
-        this.username = username;
-        this.password = hashPass;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.isAlum = isAlum;
-        this.bio = bio;
-    }
+
 
     public Long getId() {
         return id;
@@ -164,5 +163,13 @@ public class AppUser implements UserDetails {
 
     public void setUserPosts(List<Post> userPosts) {
         this.userPosts = userPosts;
+    }
+
+    public List<Comment> getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(List<Comment> userComments) {
+        this.userComments = userComments;
     }
 }
