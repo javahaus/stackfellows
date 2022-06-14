@@ -12,11 +12,11 @@ public class Comment {
     private int votes = 0;
 
     @ManyToOne
-    @JoinColumn(name="post_id")
+//    @JoinColumn(name="post_id")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+//    @JoinColumn(name="user_id")
     private AppUser appUser;
 
     public Comment() {

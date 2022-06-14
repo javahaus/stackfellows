@@ -29,8 +29,8 @@ public class AppUser implements UserDetails {
      List<Post> userPosts;
 
 //     TODO: Connect
-//     @OneToMany(mappedBy = "appUser")
-//     List<Comment> userComments;
+     @OneToMany(mappedBy = "appUser")
+     List<Comment> userComments;
 
 
     public AppUser() {
@@ -161,5 +161,13 @@ public class AppUser implements UserDetails {
 
     public void setUserPosts(List<Post> userPosts) {
         this.userPosts = userPosts;
+    }
+
+    public List<Comment> getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(List<Comment> userComments) {
+        this.userComments = userComments;
     }
 }
