@@ -1,5 +1,18 @@
 # User Stories
 
+## About Time Estimates
+
+From *[Code Fellows Common Curriculum: User Stories]*: 
+
+Once your user stories have been completed. Estimate each of them on a scale of of “extra small” all the way to 
+“extra large”. This means take a look at each story and determine how long you expect the user story to take 
+to be completed.
+
+You should anticipate an “extra small” user story to just take a 0-2 hours, while an “extra large” would take a day or 
+two. Write your estimates on each user story, and keep track of your actual time once completed.
+
+[Code Fellows Common Curriculum: User Stories](https://codefellows.github.io/common_curriculum/projects/UserStories)
+
 ## MVP Orientated
 
 - Personal Login: As a user I want to be able to login with my username and password and easily access the questions I have asked, and ones I have answered.
@@ -28,6 +41,9 @@ Acceptance Tests:
 [ ] A page (presumably the "user profile" page?) will display any/all posts made by currently logged in user.
 
 Note: We have not determined a means to differentiate between Question Post and Answer Post, which may end up being a stretch goal.
+
+Time Estimate:
+
 
 ### User Story Title
 
