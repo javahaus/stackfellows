@@ -20,6 +20,14 @@
         <input type="submit" value="submit">
     </fieldset>
 </form>
+
+<div th:if="${posts != null}">
+    <h3>List of all blog posts</h3>
+    <ul th:each="post: ${posts}">
+        <li th:text="${post.title} + ': ' + ${post.body}">post</li>
+    </ul>
+</div>
+
 <a href="/logout">Log Out</a>
 </body>
 </html>
