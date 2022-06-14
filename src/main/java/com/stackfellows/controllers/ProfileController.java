@@ -24,11 +24,13 @@ public class ProfileController {
     @GetMapping("/myProfile")
     public String getProfile(Principal p, Model m){
         if(p != null){
-            String username = p.getName();
-            AppUser user = appUserRepo.findByUsername(username);
+            String sessionUsername = p.getName();
+            AppUser user = appUserRepo.findByUsername(sessionUsername);
             List<Post> postList = user.getUserPosts();
+            m.addAttribute("sessionUsername", sessionUsername);
+            m.addAttribute("user", user);
+            m.addAttribute("postList", postList);
         }
-
         return "profile";
     }
 }
