@@ -29,7 +29,13 @@ public class BlogPostController {
     @GetMapping("/blogpost/{id}")
     public String getPostPage(Principal p, Model m, @PathVariable Long id){
 
-        return "blogpost";
+        if(p != null) {
+            String username = p.getName();
+            m.addAttribute("sessionUsername", username);
+        }
+        Post post = postRepo.findById(id).orElseThrow();
+            m.addAttribute("postInfo", post);
+            return "blogpost";
     }
 
     @PostMapping("/postquestions")
@@ -37,8 +43,6 @@ public class BlogPostController {
         AppUser user = appUserRepo.findByUsername(username);
         Post newPost = new Post(title, body, user);
         postRepo.save(newPost);
-
-
 
         return new RedirectView("/blogpost/" + newPost.getId());
     }
