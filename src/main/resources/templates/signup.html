@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Sign Up</h1>
-<form action="/login" method="POST">
+<form action="/signup" method="POST">
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
 
@@ -26,13 +26,13 @@
     <input type="text" name="email" id="email">
 
     <label for="isAlum">are you a Code Fellows Alum?</label>
-    <label for="isAlum">Yes</label>
-    <input type="radio" name="yes" value="Yes" id="isAlum">
-    <label for="isAlum">No</label>
-    <input type="radio" name="no" value="No" id="no">
+    <input type="checkbox" name="isAlum" id="isAlum">
+
+    <label for="bio">bio</label>
+    <input type="text" name="bio" id="bio">
 
 
-    <input type="submit" value="login">
+    <input type="submit" value="Sign Up">
 </form>
 </body>
 </html>

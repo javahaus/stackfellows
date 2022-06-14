@@ -42,10 +42,17 @@ public class LoginController {
     @PostMapping("/signup")
     public RedirectView signup(String username, String password, String firstName, String lastName, String email, Boolean isAlum, String bio) {
         String hashPass = passwordEncoder.encode(password);
-        AppUser newUser = new AppUser(username, hashPass, firstName, lastName, email, isAlum, bio);
-        appUserRepo.save(newUser);
+
+        if(isAlum == null){
+            AppUser newUser = new AppUser(username, hashPass, firstName, lastName, email, false, bio);
+            appUserRepo.save(newUser);
+        }
+        else {
+            AppUser newUser = new AppUser(username, hashPass, firstName, lastName, email, isAlum, bio);
+            appUserRepo.save(newUser);
+        }
         authWithHttpServerRequest(username, password);
-        return new RedirectView("/index");
+        return new RedirectView("/");
     }
 
     public void authWithHttpServerRequest(String username, String password) {

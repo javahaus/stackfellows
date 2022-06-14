@@ -77,6 +77,13 @@ public class AppUser implements UserDetails {
     }
 
     public AppUser(String username, String hashPass, String firstName, String lastName, String email, Boolean isAlum, String bio) {
+        this.username = username;
+        this.password = hashPass;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.isAlum = isAlum;
+        this.bio = bio;
     }
 
     public Long getId() {
