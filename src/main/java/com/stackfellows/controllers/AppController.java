@@ -35,10 +35,9 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String getHome(){
         return "index";
     }
-
 
 }
