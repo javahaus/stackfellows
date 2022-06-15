@@ -68,7 +68,7 @@ public class BlogPostController {
         editedPost.setBody(body);
         postRepo.save(editedPost);
 
-        return new RedirectView("/myProfile");
+        return new RedirectView("/blogpost/" + id);
 
     }
 
