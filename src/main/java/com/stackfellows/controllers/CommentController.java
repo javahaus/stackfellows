@@ -9,6 +9,7 @@ import com.stackfellows.repos.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -34,7 +35,14 @@ public class CommentController {
             Comment newComment = new Comment(body, post, user);
             commentRepo.save(newComment);
         }
-
             return new RedirectView("/blogpost/" + id);
+    }
+
+    @PutMapping("/upvoteComment")
+    public RedirectView upvoteComment(Long id){
+        Comment comment = commentRepo.findById(id).orElseThrow();
+        comment.setVotes(comment.getVotes() + 1);
+        commentRepo.save(comment);
+        return new RedirectView("/blogpost/" + id);
     }
 }
