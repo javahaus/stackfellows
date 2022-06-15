@@ -1,5 +1,8 @@
 package com.stackfellows.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,11 +15,11 @@ public class Comment {
     private int votes = 0;
 
     @ManyToOne
-//    @JoinColumn(name="post_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
 
     @ManyToOne
-//    @JoinColumn(name="user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppUser appUser;
 
     public Comment() {

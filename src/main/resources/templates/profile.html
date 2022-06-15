@@ -8,6 +8,7 @@
     <title>My Profile</title>
 </head>
 <body>
+<a href="/index">Home</a>
 <p th:text="${sessionUsername}"></p>
 
 <p th:text="${user.username}"></p>
@@ -20,6 +21,32 @@
 <ul th:each="post : ${postList}">
     <li th:text="${post.title }"></li>
     <li th:text="${post.body }"></li>
+    <form action="/deletePost" th:method="delete">
+        <input type="hidden" th:value="${post.id}" name="id" id="id">
+        <input type="submit" value="Delete">
+    </form>
 </ul>
+
+<form action="/updateAccount" th:method="put">
+    <fieldset>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" required>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required>
+
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required>
+
+        <label for="isAlum">are you a Code Fellows Alum?</label>
+        <input type="checkbox" name="isAlum" id="isAlum">
+
+        <label for="bio">bio</label>
+        <input type="text" name="bio" id="bio" required>
+
+        <input type="submit" value="Update">
+    </fieldset>
+</form>
+
 </body>
 </html>
