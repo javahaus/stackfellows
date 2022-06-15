@@ -47,6 +47,14 @@ public class CommentController {
         return new RedirectView("/blogpost/" + comment.getPost().getId());
     }
 
+    @PutMapping("/editComment")
+    public RedirectView editComment(String body, Principal p, Long id, Long postid){
+        Comment editedComment = commentRepo.findById(id).orElseThrow();
+        editedComment.setBody(body);
+        commentRepo.save(editedComment);
+        return new RedirectView("/blogpost/" + postid);
+    }
+
     @DeleteMapping("/deleteComment")
     public RedirectView deleteComment(Long id){
         Comment comment = commentRepo.findById(id).orElseThrow();
