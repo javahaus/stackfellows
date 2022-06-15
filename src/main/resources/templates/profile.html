@@ -9,24 +9,38 @@
 </head>
 <body>
 <a href="/index">Home</a>
-<p th:text="${sessionUsername}"></p>
 
-<p th:text="${user.username}"></p>
+<!--User Info Block-->
+<!--<p th:text="${sessionUsername}"></p>-->
+<!--<p th:text="${user.username}"></p>-->
 <p th:text="${user.firstName}"></p>
 <p th:text="${user.lastName}"></p>
 <p th:text="${user.isAlum}"></p>
 <p th:text="${user.email}"></p>
 <p th:text="${user.bio}"></p>
 
+<!--List of Posts-->
+<h2>My Posts</h2>
 <ul th:each="post : ${postList}">
-    <li th:text="${post.title }"></li>
-    <li th:text="${post.body }"></li>
+    <a th:href="'/blogpost/' + ${post.id}" th:text="${post.title}"></a>
+<!--    <li th:text="${post.body }"></li>-->
     <form action="/deletePost" th:method="delete">
-        <input type="hidden" th:value="${post.id}" name="id" id="id">
+        <input type="hidden" th:value="${post.id}" name="id" id="postid">
         <input type="submit" value="Delete">
     </form>
 </ul>
 
+<!--List of Comments-->
+<h2>My Comments</h2>
+<ul th:each="comment : ${commentList}">
+    <a th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
+    <form action="/deleteComment" th:method="delete">
+        <input type="hidden" th:value="${comment.id}" name="id" id="commentid">
+        <input type="submit" value="Delete">
+    </form>
+</ul>
+
+<!--Form to Update User Info-->
 <form action="/updateAccount" th:method="put">
     <fieldset>
         <label for="firstName">First Name</label>
