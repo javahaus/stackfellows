@@ -115,7 +115,7 @@ public class BlogPostController {
     }
 
 
-
+    @PutMapping("/upvotePost")
     public RedirectView upvotePost(Long id){
         Post post = postRepo.findById(id).orElseThrow();
         post.setVotes(post.getVotes() + 1);
