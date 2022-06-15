@@ -14,6 +14,7 @@
 
 <form action="/postquestions" method="post" >
     <fieldset>
+<<<<<<< HEAD
         <legend>Add a Post</legend>
         <div class="label">
             <label for="title">Title</label>
@@ -28,6 +29,15 @@
             <input type="text" name="body" id="body">
         </div>
 
+=======
+        <legend>add Post</legend>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="body">Body</label>
+        <input type="text" name="body" id="body">
+        <label for="codesnippet">Paste in any Code you wish to share</label>
+        <textarea id="codesnippet" name="codesnippet" rows="15" cols="30"></textarea>
+>>>>>>> 7c25811f01974d2a55c93b2bde20fa8f02203a40
         <input type="submit" value="submit">
     </fieldset>
 </form>
@@ -36,7 +46,10 @@
 <div th:if="${posts != null}">
     <h3>List of all blog posts</h3>
     <ul th:each="post: ${posts}">
-        <li th:text="${post.title} + ': ' + ${post.body}">post</li>
+        <li>
+            <div th:text="${post.title}">title</div>
+            <div style="white-space: pre;" th:text="${post.body}">body</div>
+        </li>
     </ul>
 </div>
 
