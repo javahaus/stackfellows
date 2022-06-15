@@ -28,4 +28,12 @@ public class HomeController {
         springModel.addAttribute("posts", posts);
         return "index";
     }
+
+    @GetMapping("/")
+    public String getHome(Principal principal, Model springModel) {
+        AppUser user = appUserRepo.findByUsername(principal.getName());
+        List<Post> posts = postRepo.findAll(); // TODO: consider implementing SORT in this params list
+        springModel.addAttribute("posts", posts);
+        return "index";
+    }
 }
