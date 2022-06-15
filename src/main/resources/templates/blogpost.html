@@ -4,54 +4,67 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-    <body>
-    <a href="/index">Home</a>
-    <a href="/myProfile">Profile</a>
-        <h2 th:text="${sessionUsername}"></h2>
-            <p th:text="${postInfo.title}"></p>
-            <p style="white-space: pre;" th:text="${postInfo.body}"></p>
-            <form action="/editpost" th:method="put">
-                <fieldset>
-                    <legend>Edit Post</legend>
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title">
-                    <label for="postBody">Body</label>
-                    <input type="text" name="body" id="postBody">
-                    <label for="codesnippet">Paste in any Code you wish to share</label>
-                    <textarea id="codesnippet" name="codesnippet" rows="15" cols="30"></textarea>
-                    <input type="hidden" th:value="${postInfo.id}" name="postid">
-                    <input type="submit" value="edit">
-                </fieldset>
-            </form>
-            <form action="/postComment" method="post">
-                <fieldset>
-                    <legend>Add a Comment</legend>
-                    <textarea rows="5" cols="40" name="body" id="body"> </textarea>
-                    <input type="hidden" th:value="${postInfo.id}" name="id" id="id" >
-                    <input type="submit" value="Submit">
-                </fieldset>
-            </form>
-    <ul th:if="${!commentList.isEmpty()}" th:each="comment:${commentList}">
-        <li style="white-space: pre;" th:text="${comment.body}"></li>
-        <p th:text="'- ' + ${comment.appUser.username}"></p>
-        <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/deleteComment" th:method="delete">
-            <input type="hidden" th:value="${comment.id}" name="id">
-            <input type="submit" value="Delete">
-        </form>
+<body>
+<a href="/index">Home</a>
+<a href="/myProfile">Profile</a>
+<br>
 
-        <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/editComment" th:method="put">
-            <textarea rows="5" cols="40" name="body" id="commentBody"> </textarea>
-            <input type="hidden" th:value="${postInfo.id}" name="postid" id="postid" >
-            <input type="hidden" th:value="${comment.id}" name="id">
-            <input type="submit" value="edit">
+<!--Upvote Section-->
+<form style="width: fit-content; display: inline;" action="/upvotePost" th:method="put">
+    <input type="submit" value="^">
+    <input type="hidden" th:value="${postInfo.id}" name="id" id="upvoteid">
+</form>
+<h2 style="display: inline;" th:text="'Upvotes: ' + ${postInfo.votes}"></h2>
 
-        </form>
+<!--Post Section-->
+<h2 th:text="${sessionUsername}"></h2>
+<p th:text="${postInfo.title}"></p>
+<p style="white-space: pre;" th:text="${postInfo.body}"></p>
 
-    </ul>
+<!--Edit Post-->
+<form action="/editpost" th:method="put">
+    <fieldset>
+        <legend>Edit Post</legend>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="postBody">Body</label>
+        <input type="text" name="body" id="postBody">
+        <label for="codesnippet">Paste in any Code you wish to share</label>
+        <textarea id="codesnippet" name="codesnippet" rows="15" cols="30"></textarea>
+        <input type="hidden" th:value="${postInfo.id}" name="postid">
+        <input type="submit" value="edit">
+    </fieldset>
+</form>
 
+<!--Post Comment Section-->
+<form action="/postComment" method="post">
+    <fieldset>
+        <legend>Add a Comment</legend>
+        <textarea rows="5" cols="40" name="body" id="body"> </textarea>
+        <input type="hidden" th:value="${postInfo.id}" name="id" id="id">
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
 
-        <a href="/index">main</a>
-
-    </body>
-
+<!--List of Comment Section-->
+<ul th:if="${!commentList.isEmpty()}" th:each="comment:${commentList}">
+    <form style="width: fit-content; display: inline;" action="/upvoteComment" th:method="put">
+        <input type="hidden" th:value="${comment.id}" name="id" id="commentUpvoteid">
+        <input type="submit" value="^">
+    </form>
+    <h2 style="display: inline;" th:text="'Upvotes: ' + ${comment.votes}"></h2>
+    <li style="white-space: pre;" th:text="${comment.body}"></li>
+    <p th:text="'- ' + ${comment.appUser.username}"></p>
+    <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/deleteComment" th:method="delete">
+        <input type="hidden" th:value="${comment.id}" name="id">
+        <input type="submit" value="Delete">
+    </form>
+    <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/editComment" th:method="put">
+        <textarea rows="5" cols="40" name="body" id="commentBody"> </textarea>
+        <input type="hidden" th:value="${postInfo.id}" name="postid" id="postid" >
+        <input type="hidden" th:value="${comment.id}" name="id">
+        <input type="submit" value="edit">
+    </form>
+</ul>
+</body>
 </html>

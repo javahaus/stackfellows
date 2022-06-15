@@ -1,6 +1,7 @@
 package com.stackfellows.controllers;
 
 import com.stackfellows.model.AppUser;
+import com.stackfellows.model.Comment;
 import com.stackfellows.model.Post;
 import com.stackfellows.repos.AppUserRepo;
 import com.stackfellows.repos.PostRepo;
@@ -30,9 +31,11 @@ public class ProfileController {
             String sessionUsername = p.getName();
             AppUser user = appUserRepo.findByUsername(sessionUsername);
             List<Post> postList = user.getUserPosts();
+            List<Comment> commentList = user.getUserComments();
             m.addAttribute("sessionUsername", sessionUsername);
             m.addAttribute("user", user);
             m.addAttribute("postList", postList);
+            m.addAttribute("commentList", commentList);
         }
         return "profile";
     }

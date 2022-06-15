@@ -44,7 +44,7 @@ public class CommentController {
         Comment comment = commentRepo.findById(id).orElseThrow();
         comment.setVotes(comment.getVotes() + 1);
         commentRepo.save(comment);
-        return new RedirectView("/blogpost/" + id);
+        return new RedirectView("/blogpost/" + comment.getPost().getId());
     }
 
     @PutMapping("/editComment")
