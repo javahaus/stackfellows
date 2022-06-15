@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: bisque !important;
+}
+
+div {
+    border: blue dashed 1px;
+}
+
+.textaligncenter {
+    text-align: center;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.allleft {
+    text-align: left;
+}
+
+.tempverytall {
+    height: max-content;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    border: .1rem solid black ;
+    padding: .1em;
+    margin-bottom: .1em !important;
+    align-items: center;
+}
+
+p{
+    margin-bottom: .1em !important;
+}
+
+input{
+    margin-bottom: .5rem !important;
+}
+
