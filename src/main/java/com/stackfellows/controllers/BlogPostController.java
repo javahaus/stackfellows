@@ -89,14 +89,28 @@ public class BlogPostController {
 
 
     @PutMapping("/editpost")
-    public RedirectView editUserPost(Principal p, String title, String body, Long postid){
+    public RedirectView editUserPost(Principal p, String title, String body, String codesnippet, Long postid){
 
         Post editedPost = postRepo.findById(postid).orElseThrow();
         editedPost.setTitle(title);
-        editedPost.setBody(body);
+        StringBuilder bodyFullText = new StringBuilder();
+        bodyFullText.append(body);
+
+        if (codesnippet.length() > 0) {
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append(codesnippet);
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+        }
+
+        editedPost.setBody(bodyFullText.toString());
         postRepo.save(editedPost);
 
-        return new RedirectView("/blogpost/" + id);
+        return new RedirectView("/blogpost/" + postid);
 
     }
 
