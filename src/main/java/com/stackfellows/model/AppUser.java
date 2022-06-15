@@ -25,11 +25,11 @@ public class AppUser implements UserDetails {
     private String role;
 
 
-     @OneToMany(mappedBy = "appUser")
+     @OneToMany(mappedBy = "appUser", cascade = CascadeType.REMOVE)
      List<Post> userPosts;
 
 //     TODO: Connect
-     @OneToMany(mappedBy = "appUser")
+     @OneToMany(mappedBy = "appUser", cascade = CascadeType.REMOVE)
      List<Comment> userComments;
 
 

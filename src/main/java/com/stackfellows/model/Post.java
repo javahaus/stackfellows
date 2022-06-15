@@ -22,7 +22,7 @@ public class Post {
     AppUser appUser;
 
     //TODO:Connect
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     List<Comment> postComments;
 
 
