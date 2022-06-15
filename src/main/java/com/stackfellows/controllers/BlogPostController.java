@@ -52,6 +52,22 @@ public class BlogPostController {
             return "blogpost";
     }
 
+    @GetMapping("/editpost/{id}")
+    public String getEditPage(Principal p, Model m, @PathVariable Long id){
+
+        if(p != null) {
+            String username = p.getName();
+            m.addAttribute("sessionUsername", username);
+        }
+        Post post = postRepo.findById(id).orElseThrow();
+        m.addAttribute("postInfo", post);
+
+        List<Comment> commentList = post.getPostComments();
+        m.addAttribute("commentList", commentList);
+
+        return "blogpost";
+    }
+
     @PostMapping("/postquestions")
     public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
         StringBuilder bodyFullText = new StringBuilder();

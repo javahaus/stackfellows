@@ -29,9 +29,15 @@
         <li>
             <div th:text="${post.title}">title</div>
             <div style="white-space: pre;" th:text="${post.body}">body</div>
+            <a href="/editpost/{id}">edit</a>
         </li>
     </ul>
+
+
 </div>
+<a href="/blogpost/{id}">Posts</a>
+
+
 
 <a href="/logout">Log Out</a>
 </body>
