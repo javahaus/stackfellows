@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 
 import java.util.List;
@@ -51,10 +53,24 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, Principal p){
+    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
+        StringBuilder bodyFullText = new StringBuilder();
+        bodyFullText.append(body);
         String username = p.getName();
         AppUser user = appUserRepo.findByUsername(username);
-        Post newPost = new Post(title, body, user);
+
+        if (codesnippet.length() > 0) {
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append(codesnippet);
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+        }
+
+        Post newPost = new Post(title, bodyFullText.toString(), user);
         postRepo.save(newPost);
 
         return new RedirectView("/blogpost/" + newPost.getId());
