@@ -62,3 +62,7 @@ Creative Mind Overlord [Jason Wilson](https://github.com/WilsonJhub)
 Code Challenge Swashbuckler [Chuck Altopiedi](https://github.com/ChuckAlto)
 
 Git-fu Master [Jon Rumsey](https://github.com/nojronatron)
+
+## References and Attributions
+
+Thymeleaf code to maintain plain text line feeds from [Stack Overflow](https://stackoverflow.com/questions/49849839/spring-thymeleaf-text-next-line)
