@@ -1,8 +1,10 @@
 package com.stackfellows.controllers;
 
 import com.stackfellows.model.AppUser;
+import com.stackfellows.model.Comment;
 import com.stackfellows.model.Post;
 import com.stackfellows.repos.AppUserRepo;
+import com.stackfellows.repos.CommentRepo;
 import com.stackfellows.repos.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.util.Optional;
+
+import java.util.List;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
@@ -28,6 +31,7 @@ public class BlogPostController {
     @Autowired
     PostRepo postRepo;
 
+
     //TODO: add comment list as attribute.
     // create a comment controller - @postMapping (Comment Controller)
     @GetMapping("/blogpost/{id}")
@@ -39,6 +43,10 @@ public class BlogPostController {
         }
         Post post = postRepo.findById(id).orElseThrow();
             m.addAttribute("postInfo", post);
+
+        List<Comment> commentList = post.getPostComments();
+            m.addAttribute("commentList", commentList);
+
             return "blogpost";
     }
 
@@ -54,8 +62,7 @@ public class BlogPostController {
 
     @PutMapping("/editpost")
     public RedirectView editUserPost(Principal p, String title, String body, Long postid){
-//        String username = p.getName();
-//        AppUser user = appUserRepo.findByUsername(username);
+
         Post editedPost = postRepo.findById(postid).orElseThrow();
         editedPost.setTitle(title);
         editedPost.setBody(body);
@@ -63,6 +70,15 @@ public class BlogPostController {
 
         return new RedirectView("/myProfile");
 
+    }
+
+
+    @PutMapping("/upvotePost")
+    public RedirectView upvotePost(Long id){
+        Post post = postRepo.findById(id).orElseThrow();
+        post.setVotes(post.getVotes() + 1);
+        postRepo.save(post);
+        return new RedirectView("/blogpost/" + id);
     }
 
 }
