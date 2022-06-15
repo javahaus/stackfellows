@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
+
 import java.util.List;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -46,6 +47,22 @@ public class BlogPostController {
             return "blogpost";
     }
 
+    @GetMapping("/editpost/{id}")
+    public String getEditPage(Principal p, Model m, @PathVariable Long id){
+
+        if(p != null) {
+            String username = p.getName();
+            m.addAttribute("sessionUsername", username);
+        }
+        Post post = postRepo.findById(id).orElseThrow();
+        m.addAttribute("postInfo", post);
+
+        List<Comment> commentList = post.getPostComments();
+        m.addAttribute("commentList", commentList);
+
+        return "blogpost";
+    }
+
     @PostMapping("/postquestions")
     public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
         StringBuilder bodyFullText = new StringBuilder();
@@ -70,7 +87,35 @@ public class BlogPostController {
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
-    @PutMapping("/upvotePost")
+
+    @PutMapping("/editpost")
+    public RedirectView editUserPost(Principal p, String title, String body, String codesnippet, Long postid){
+
+        Post editedPost = postRepo.findById(postid).orElseThrow();
+        editedPost.setTitle(title);
+        StringBuilder bodyFullText = new StringBuilder();
+        bodyFullText.append(body);
+
+        if (codesnippet.length() > 0) {
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append(codesnippet);
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+        }
+
+        editedPost.setBody(bodyFullText.toString());
+        postRepo.save(editedPost);
+
+        return new RedirectView("/blogpost/" + postid);
+
+    }
+
+
+
     public RedirectView upvotePost(Long id){
         Post post = postRepo.findById(id).orElseThrow();
         post.setVotes(post.getVotes() + 1);
@@ -83,4 +128,5 @@ public class BlogPostController {
         postRepo.deleteById(id);
         return new RedirectView("/myProfile");
     }
+
 }
