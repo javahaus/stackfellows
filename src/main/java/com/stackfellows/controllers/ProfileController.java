@@ -36,9 +36,17 @@ public class ProfileController {
         return "profile";
     }
 
-//    @PutMapping("/updateAccount")
-//    public String updateAccount(Principal p, Model m, String firstName, String lastName, String email, String bio, Boolean isAlum){
-//
-//        return "/login";
-//    }
+    @PutMapping("/updateAccount")
+    public String updateAccount(Principal p, Model m, String firstName, String lastName, String email, String bio, Boolean isAlum){
+        if(p != null){
+            String username = p.getName();
+            AppUser appUser = appUserRepo.findByUsername(username);
+            appUser.setFirstName(firstName);
+            appUser.setLastName(lastName);
+            appUser.setEmail(email);
+            appUser.setBio(bio);
+            appUser.setAlum(isAlum);
+        }
+        return "/myProfile";
+    }
 }
