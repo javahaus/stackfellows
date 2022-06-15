@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.*;
@@ -44,7 +45,6 @@ public class BlogPostController {
         Post post = postRepo.findById(id).orElseThrow();
             m.addAttribute("postInfo", post);
 
-//      Comment comment = commentRepo.findById(id);
         List<Comment> commentList = post.getPostComments();
             m.addAttribute("commentList", commentList);
 
@@ -75,4 +75,12 @@ public class BlogPostController {
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
+
+    @PutMapping("/upvotePost")
+    public RedirectView upvotePost(Long id){
+        Post post = postRepo.findById(id).orElseThrow();
+        post.setVotes(post.getVotes() + 1);
+        postRepo.save(post);
+        return new RedirectView("/blogpost/" + id);
+    }
 }
