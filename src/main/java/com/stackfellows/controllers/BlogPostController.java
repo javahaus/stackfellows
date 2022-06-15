@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.*;
@@ -34,8 +31,6 @@ public class BlogPostController {
     PostRepo postRepo;
 
 
-    //TODO: add comment list as attribute.
-    // create a comment controller - @postMapping (Comment Controller)
     @GetMapping("/blogpost/{id}")
     public String getPostPage(Principal p, Model m, @PathVariable Long id){
 
@@ -92,6 +87,7 @@ public class BlogPostController {
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
+
     @PutMapping("/editpost")
     public RedirectView editUserPost(Principal p, String title, String body, Long postid){
 
@@ -105,12 +101,18 @@ public class BlogPostController {
     }
 
 
-    @PutMapping("/upvotePost")
+
     public RedirectView upvotePost(Long id){
         Post post = postRepo.findById(id).orElseThrow();
         post.setVotes(post.getVotes() + 1);
         postRepo.save(post);
         return new RedirectView("/blogpost/" + id);
+    }
+
+    @DeleteMapping("/deletePost")
+    public RedirectView deletePost(Long id){
+        postRepo.deleteById(id);
+        return new RedirectView("/myProfile");
     }
 
 }

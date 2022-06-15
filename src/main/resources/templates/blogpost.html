@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
     <body>
+    <a href="/index">Home</a>
+    <a href="/myProfile">Profile</a>
         <h2 th:text="${sessionUsername}"></h2>
             <p th:text="${postInfo.title}"></p>
             <p style="white-space: pre;" th:text="${postInfo.body}"></p>
@@ -21,6 +23,10 @@
     <ul th:if="${!commentList.isEmpty()}" th:each="comment:${commentList}">
         <li style="white-space: pre;" th:text="${comment.body}"></li>
         <p th:text="'- ' + ${comment.appUser.username}"></p>
+        <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/deleteComment" th:method="delete">
+            <input type="hidden" th:value="${comment.id}" name="id">
+            <input type="submit" value="Delete">
+        </form>
     </ul>
 
 
