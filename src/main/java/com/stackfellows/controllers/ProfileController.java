@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ProfileController {
     }
 
     @PutMapping("/updateAccount")
-    public String updateAccount(Principal p, Model m, String firstName, String lastName, String email, String bio, Boolean isAlum){
+    public RedirectView updateAccount(Principal p, String firstName, String lastName, String email, String bio, Boolean isAlum){
         if(p != null){
             String username = p.getName();
             AppUser appUser = appUserRepo.findByUsername(username);
@@ -45,8 +46,13 @@ public class ProfileController {
             appUser.setLastName(lastName);
             appUser.setEmail(email);
             appUser.setBio(bio);
-            appUser.setAlum(isAlum);
+            if (isAlum == null) {
+                appUser.setAlum(false);
+            } else {
+                appUser.setAlum(isAlum);
+            }
+            appUserRepo.save(appUser);
         }
-        return "/myProfile";
+        return new RedirectView("myProfile");
     }
 }
