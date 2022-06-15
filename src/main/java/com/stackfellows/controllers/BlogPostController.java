@@ -58,26 +58,15 @@ public class BlogPostController {
         String username = p.getName();
         AppUser user = appUserRepo.findByUsername(username);
 
-        try {
-            // https://www.baeldung.com/convert-string-to-input-stream
-            if (codesnippet.length() > 1) {
-                InputStream codesnipStream = new ByteArrayInputStream(codesnippet.getBytes());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(codesnipStream));
-                bodyFullText.append("/n");
-                bodyFullText.append("##### code #####");
-                bodyFullText.append("/n");
-
-                while (reader.ready()) {
-                    String codeline = codesnipStream.read();
-                    bodyFullText.append(codeline);
-                }
-
-                bodyFullText.append("/n");
-                bodyFullText.append("##### code #####");
-            }
-        } catch (IOException ioex) {
-            // add a logging function to catch this error
-            System.out.println("Exception thrown reading code snippet: " + ioex.getMessage());
+        if (codesnippet.length() > 0) {
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
+            bodyFullText.append("\r\n");
+            bodyFullText.append("\r\n");
+            bodyFullText.append(codesnippet);
+            bodyFullText.append("\r\n");
+            bodyFullText.append("----- code snippet -----");
         }
 
         Post newPost = new Post(title, bodyFullText.toString(), user);

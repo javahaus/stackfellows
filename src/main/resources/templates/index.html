@@ -26,7 +26,10 @@
 <div th:if="${posts != null}">
     <h3>List of all blog posts</h3>
     <ul th:each="post: ${posts}">
-        <li th:text="${post.title} + ': ' + ${post.body}">post</li>
+        <li>
+            <div th:text="${post.title}">title</div>
+            <div style="white-space: pre;" th:text="${post.body}">body</div>
+        </li>
     </ul>
 </div>
 
