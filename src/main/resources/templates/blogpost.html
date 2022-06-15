@@ -7,7 +7,7 @@
     <body>
         <h2 th:text="${sessionUsername}"></h2>
             <p th:text="${postInfo.title}"></p>
-            <p th:text="${postInfo.body}"></p>
+            <p style="white-space: pre;" th:text="${postInfo.body}"></p>
 
             <form action="/postComment" method="post">
                 <fieldset>
