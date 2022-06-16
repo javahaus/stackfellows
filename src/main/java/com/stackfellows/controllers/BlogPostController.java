@@ -64,39 +64,25 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
-        StringBuilder bodyFullText = new StringBuilder();
-        bodyFullText.append(body);
+    public RedirectView postAQuestion(String title, String body, String codeSnippet, Principal p){
+        // create a new Post object, concatenate the code snippet with the text body, store to db, return blogpost page
+        String bodyFullText = this.concatPostAndSnippet(body, codeSnippet);
         String username = p.getName();
         AppUser user = appUserRepo.findByUsername(username);
-
-        if (codesnippet.length() > 0) {
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append(codesnippet);
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-        }
-
-        Post newPost = new Post(title, bodyFullText.toString(), user);
+        Post newPost = new Post(title, bodyFullText, user);
         postRepo.save(newPost);
-
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
-
     @PutMapping("/editpost")
-    public RedirectView editUserPost(Principal p, String title, String body, String codesnippet, Long postid){
-        // find existing post by id, set the title and try to concatenate body and codesnippet and update the blogpost
-        Post editedPost = postRepo.findById(postid).orElseThrow();
+    public RedirectView editUserPost(String title, String body, String codeSnippet, Long postId){
+        // find existing post by id, set the title and try to concatenate body and code snippet and update the blogpost page
+        Post editedPost = postRepo.findById(postId).orElseThrow();
         editedPost.setTitle(title);
-        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
+        String bodyFullText = this.concatPostAndSnippet(body, codeSnippet);
         editedPost.setBody(bodyFullText);
         postRepo.save(editedPost);
-        return new RedirectView("/blogpost/" + postid);
+        return new RedirectView("/blogpost/" + postId);
     }
 
     @PutMapping("/upvotePost")
