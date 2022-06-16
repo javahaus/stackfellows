@@ -55,7 +55,7 @@ Currently under development.
 
 ## The Team
 
-Soft Spoken Code Slinger [Roger Reyes](https://github.com/RogerMReyes)
+Soft Spoken Code Mastermind [Roger Reyes](https://github.com/RogerMReyes)
 
 Creative Mind Overlord [Jason Wilson](https://github.com/WilsonJhub)
 
