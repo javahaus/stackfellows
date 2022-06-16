@@ -22,4 +22,10 @@ Comment: Represents a Comment made on a Post. AppUser can make many of these. Po
 
 ## CRUD Operations
 
-TBD
+[ ] Create: Post a new question/blogpost, post a new comment, newly registered user.
+
+[ ] Read: Get a specific blogbost, many blogposts by user, all blogposts, or get one or more comments related to a post.
+
+[ ] Update: Edit an existing blogpost, and change the number of "up votes" on a post or comment, registered user's own information. 
+
+[ ] Delete: Remove one's own blogpost or comment.
