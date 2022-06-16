@@ -33,9 +33,15 @@ a{
     text-decoration: none;
     color: black;
 }
+
 a:hover{
     color: blue;
 }
+
+img {
+    opacity: 0.9;
+}
+
 
 /*.allleft {*/
 /*    text-align: left;*/
