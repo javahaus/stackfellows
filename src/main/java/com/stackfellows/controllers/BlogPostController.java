@@ -90,30 +90,14 @@ public class BlogPostController {
 
     @PutMapping("/editpost")
     public RedirectView editUserPost(Principal p, String title, String body, String codesnippet, Long postid){
-
+        // find existing post by id, set the title and try to concatenate body and codesnippet and update the blogpost
         Post editedPost = postRepo.findById(postid).orElseThrow();
         editedPost.setTitle(title);
-        StringBuilder bodyFullText = new StringBuilder();
-        bodyFullText.append(body);
-
-        if (codesnippet.length() > 0) {
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append(codesnippet);
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-        }
-
-        editedPost.setBody(bodyFullText.toString());
+        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
+        editedPost.setBody(bodyFullText);
         postRepo.save(editedPost);
-
         return new RedirectView("/blogpost/" + postid);
-
     }
-
 
     @PutMapping("/upvotePost")
     public RedirectView upvotePost(Long id){
@@ -127,6 +111,32 @@ public class BlogPostController {
     public RedirectView deletePost(Long id){
         postRepo.deleteById(id);
         return new RedirectView("/myProfile");
+    }
+
+    private String concatPostAndSnippet(String postBody, String codeSnippet) {
+        if (codeSnippet.length() > 0) {
+            StringBuilder bodyFullText = new StringBuilder();
+
+            try {
+                bodyFullText.append(postBody);
+                bodyFullText.append("\r\n");
+                bodyFullText.append("\r\n");
+                bodyFullText.append("----- code snippet -----");
+                bodyFullText.append("\r\n");
+                bodyFullText.append("\r\n");
+                bodyFullText.append(codeSnippet);
+                bodyFullText.append("\r\n");
+                bodyFullText.append("----- code snippet -----");
+
+                return bodyFullText.toString();
+
+            } catch (Exception ex) {
+            // TODO: add logging functionality (stretch goal)
+            // something failed so only postBody will be returned
+            }
+        }
+
+        return postBody;
     }
 
 }
