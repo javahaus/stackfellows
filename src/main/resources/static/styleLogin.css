@@ -7,8 +7,17 @@ html, body {
     background-color: #00001c;
 }
 
-div {
+#header {
+    margin-bottom: .8%
+}
 
+#login{
+    position: relative;
+    left: -25%;
+}
+
+.haus{
+    width: max-content;
 }
 
 #navbar {
@@ -25,6 +34,8 @@ div {
         background-color: burlywood;
         height: 5vh;
     margin-top: 2em;
+    position: relative;
+    left: .7%;
 
 }
 
@@ -41,6 +52,11 @@ i{
 .tempverytall {
     height: max-content;
     background-color: bisque;
+    align-items: left;
+}
+
+#login {
+
 }
 
 

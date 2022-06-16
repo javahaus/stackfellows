@@ -11,6 +11,7 @@
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
           crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link href="/styleLogin.css" rel="stylesheet" type="text/css" />
     <title>Log In</title>
 </head>
@@ -18,8 +19,9 @@
 
 <div class="container" id="fullwidth">
     <div class="row" id="header">
-        <div class="col">Logo/Icon</div>
-        <div class="col textaligncenter">Future: Search Tool?</div>
+        <div class="col"><div th:replace="frags/logo :: div.logo"></div></div>
+
+
     </div>
 
     <div class="row" id="navbar">
@@ -31,7 +33,7 @@
     <div class="row tempverytall">
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col">
+        <div class="col" id="login">
             <h1>Login</h1> <h2>(or sign up <a href="/signup">here</a>)</h2>
             <form action="/login"  method="post">
                 <label for="username">Username</label>
@@ -50,7 +52,7 @@
 
     <div class="row fullwidth">
         <div class="row footer">
-            <div class="col">JavaHaus&#169;</div>
+            <div th:replace="/frags/logo :: div.haus"></div>
             <div class="col icons">
                 <i class="fa-brands fa-instagram"></i>
                 <i class="fa-brands fa-linkedin"></i>
