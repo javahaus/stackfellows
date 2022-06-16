@@ -50,9 +50,9 @@ public class ProfileController {
             appUser.setEmail(email);
             appUser.setBio(bio);
             if (isAlum == null) {
-                appUser.setAlum(false);
+                appUser.setIsAlum(false);
             } else {
-                appUser.setAlum(isAlum);
+                appUser.setIsAlum(isAlum);
             }
             appUserRepo.save(appUser);
         }
