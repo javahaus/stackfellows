@@ -64,56 +64,26 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal p){
-        StringBuilder bodyFullText = new StringBuilder();
-        bodyFullText.append(body);
-        String username = p.getName();
+    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal principal){
+        // create a new Post object, concatenate the code snippet with the text body, store to db, return blogpost page
+        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
+        String username = principal.getName();
         AppUser user = appUserRepo.findByUsername(username);
-
-        if (codesnippet.length() > 0) {
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append(codesnippet);
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-        }
-
-        Post newPost = new Post(title, bodyFullText.toString(), user);
+        Post newPost = new Post(title, bodyFullText, user);
         postRepo.save(newPost);
-
         return new RedirectView("/blogpost/" + newPost.getId());
     }
 
-
     @PutMapping("/editpost")
-    public RedirectView editUserPost(Principal p, String title, String body, String codesnippet, Long postid){
-
+    public RedirectView editUserPost(String title, String body, String codesnippet, Long postid){
+        // find existing post by id, set the title and try to concatenate body and code snippet and update the blogpost page
         Post editedPost = postRepo.findById(postid).orElseThrow();
         editedPost.setTitle(title);
-        StringBuilder bodyFullText = new StringBuilder();
-        bodyFullText.append(body);
-
-        if (codesnippet.length() > 0) {
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-            bodyFullText.append("\r\n");
-            bodyFullText.append("\r\n");
-            bodyFullText.append(codesnippet);
-            bodyFullText.append("\r\n");
-            bodyFullText.append("----- code snippet -----");
-        }
-
-        editedPost.setBody(bodyFullText.toString());
+        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
+        editedPost.setBody(bodyFullText);
         postRepo.save(editedPost);
-
         return new RedirectView("/blogpost/" + postid);
-
     }
-
 
     @PutMapping("/upvotePost")
     public RedirectView upvotePost(Long id){
@@ -127,6 +97,32 @@ public class BlogPostController {
     public RedirectView deletePost(Long id){
         postRepo.deleteById(id);
         return new RedirectView("/myProfile");
+    }
+
+    private String concatPostAndSnippet(String postBody, String codeSnippet) {
+        if (codeSnippet.length() > 0) {
+            StringBuilder bodyFullText = new StringBuilder();
+
+            try {
+                bodyFullText.append(postBody);
+                bodyFullText.append("\r\n");
+                bodyFullText.append("\r\n");
+                bodyFullText.append("----- code snippet -----");
+                bodyFullText.append("\r\n");
+                bodyFullText.append("\r\n");
+                bodyFullText.append(codeSnippet);
+                bodyFullText.append("\r\n");
+                bodyFullText.append("----- code snippet -----");
+
+                return bodyFullText.toString();
+
+            } catch (Exception ex) {
+            // TODO: add logging functionality (stretch goal)
+            // something failed so only postBody will be returned
+            }
+        }
+
+        return postBody;
     }
 
 }
