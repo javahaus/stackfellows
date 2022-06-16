@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="/index.css">
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -12,72 +11,83 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
           crossorigin="anonymous">
     <title>Document</title>
+=======
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <title>StackFellows</title>
+>>>>>>> c78099805243637aa78ea9618e43b6163769b49c
 </head>
 <body>
 
-<div class="container" id="fullwidth">
-    <div class="row" id="header">
-        <div class="col">Logo/Icon</div>
-        <div class="col textaligncenter">Future: Search Tool?</div>
+<div class="container fullwidth">
+    <div>
+        <div class="row" id="header">
+            <div class="col"><div th:replace="frags/logo"></div></div>
+            <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
+        </div>
+
+        <div class="row" id="navbar">
+            <div class="col">[Home]</a></div>
+            <div class="col"><a href="/myProfile">Profile</a></div>
+            <div class="col"><a href="/aboutus.html">About Us</a></div>
+        </div>
+    </div>
+    <img class="mainIMG" src="/images/PlaceholderIMG.png">
+    <div>
+        <form action="/postquestions" method="post">
+            <fieldset>
+                <legend>Post a Question</legend>
+                <div class="postTotal">
+                    <div class="postOne">
+                        <div class="postLeft">
+                            <label class="titleLabel" for="title">Title</label>
+                            <input type="text" name="title" id="title">
+                        </div>
+                        <div class="postLeft">
+                            <label class="bodyLabel" for="body">Question</label>
+                            <input type="text" name="body" id="body">
+                        </div>
+                        <input class="btn postLeft" type="submit" value="submit">
+                    </div>
+                    <div class="codesnippet postTwo">
+                        <p>Code</p>
+                        <textarea id="codesnippet" name="codesnippet" rows="10" cols="60"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+
+        <div th:if="${posts != null}">
+            <h3>List of all blog posts</h3>
+            <div class="postGrid">
+                <div th:each="post: ${posts}">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${post.title}"></h5>
+                            <p class="card-text" style="white-space: pre;" th:text="${post.body}"></p>
+                            <a th:href="'/blogpost/' + ${post.id}" class="btn">Go</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row" id="navbar">
-        <div class="col textaligncenter"><a href="/index">Home</a></div>
-        <div class="col textaligncenter"><a href="/myProfile">Profile</a></div>
-        <div class="col textaligncenter"><a href="/index">About Us</a></div>
-    </div>
-    <h1>Home</h1>
-    <a href="/myProfile">Profile</a>
+    <div class="row footer">
+        <div class="col">JavaHaus&#169;</div>
+        <div class="col icons">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-github"></i>
 
-
-
-
-<form action="/postquestions" method="post" >
-    <fieldset>
-        <legend>add Post</legend>
-        <div class="postTotal">
-        <div class="postOne">
-            <div class="title">
-                <label class="titleLabel" for="title">Title</label>
-                <input type="text" name="title" id="title">
-            </div>
-            <div class="body">
-                <label class="bodyLabel" for="body">Body</label>
-                <input type="text" name="body" id="body">
-            </div>
         </div>
-        <div class="codesnippet postTwo">
-<!--            <label for="codesnippet">Paste in any Code you wish to share</label>-->
-            <textarea id="codesnippet" name="codesnippet" rows="15" cols="60"></textarea>
-        </div>
-        </div>
-        <input type="submit" value="submit">
-    </fieldset>
-</form>
-
-
-<div th:if="${posts != null}">
-    <h3>List of all blog posts</h3>
-    <ul th:each="post: ${posts}">
-        <li>
-            <div th:text="${post.title}">title</div>
-            <div style="white-space: pre;" th:text="${post.body}">body</div>
-
-        </li>
-    </ul>
-
-
-</div>
-
-<a href="/logout">Log Out</a>
-
-    <div class="row fullwidth">
-        <div class="col-1">LogoLeft?</div>
     </div>
 </div>
 

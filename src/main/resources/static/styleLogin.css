@@ -1,9 +1,10 @@
 
 
 html, body {
-  height: 100%;
-  width: 100%;
-    background-color: bisque !important;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-color: #00001c;
 }
 
 div {
@@ -19,11 +20,15 @@ div {
 }
 
 .fullwidth {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color; burlywood !important;
-  text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    align-items: left;
+    background-color: burlywood;
+    height: 5vh;
+    margin-top: 2em;
+
 }
 
 .allleft {
@@ -31,10 +36,60 @@ div {
 }
 
 .tempverytall {
-  height: 150px;
+    height: max-content;
+    background-color: bisque;
+}
+
+
+#header{
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar{
+    background-color: burlywood;
+    margin-bottom: 2em;
+    padding: .5em 0;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: .1rem solid black ;
+    padding: .1em;
+    margin-bottom: .1em;
+    align-items: center;
+    border-radius: .5em;
+}
+
+p{
+    margin-bottom: .1em;
 }
 
 .footer {
     background-color: burlywood !important;
     height: 5vh;
+}
+
+input{
+    margin-bottom: .5rem;
+}
+
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    background-color: burlywood;
+    height: 5vh;
+    position:
+}
+
+.userInfo{
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: max-content;
 }
