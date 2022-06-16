@@ -64,10 +64,10 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, String codeSnippet, Principal p){
+    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal principal){
         // create a new Post object, concatenate the code snippet with the text body, store to db, return blogpost page
-        String bodyFullText = this.concatPostAndSnippet(body, codeSnippet);
-        String username = p.getName();
+        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
+        String username = principal.getName();
         AppUser user = appUserRepo.findByUsername(username);
         Post newPost = new Post(title, bodyFullText, user);
         postRepo.save(newPost);
@@ -75,14 +75,14 @@ public class BlogPostController {
     }
 
     @PutMapping("/editpost")
-    public RedirectView editUserPost(String title, String body, String codeSnippet, Long postId){
+    public RedirectView editUserPost(String title, String body, String codesnippet, Long postid){
         // find existing post by id, set the title and try to concatenate body and code snippet and update the blogpost page
-        Post editedPost = postRepo.findById(postId).orElseThrow();
+        Post editedPost = postRepo.findById(postid).orElseThrow();
         editedPost.setTitle(title);
-        String bodyFullText = this.concatPostAndSnippet(body, codeSnippet);
+        String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
         editedPost.setBody(bodyFullText);
         postRepo.save(editedPost);
-        return new RedirectView("/blogpost/" + postId);
+        return new RedirectView("/blogpost/" + postid);
     }
 
     @PutMapping("/upvotePost")
