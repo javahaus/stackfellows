@@ -6,6 +6,8 @@ We developed the site to use PostgresQL by default, but any relational SQL DB ca
 
 This is a living document until we deliver at the end of this sprint.
 
+![Database Schema Diagram](../Imgs/stackfellows-db-schema.jpg)
+
 ## Entities
 
 AppUser: Represents a registered user.
@@ -16,7 +18,7 @@ Comment: Represents a Comment made on a Post. AppUser can make many of these. Po
 
 ## Data Relationships Design
 
-![Database Schema Diagram](../Imgs/JavaHaus-data-relationship-model.jpg)
+![Relational Data Model](../Imgs/stackfellows-relational-data-design.jpg)
 
 ## CRUD Operations
 
