@@ -183,6 +183,9 @@ a:hover{
     border-radius: .3em;
     background-color: orangered;
 }
+.logoutButton:hover{
+    color: white;
+}
 
 .mainIMG{
     margin-bottom: 3em;
@@ -264,4 +267,8 @@ textarea, .card-text{
 .postGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+i:hover, a:hover{
+    color: orangered;
 }
