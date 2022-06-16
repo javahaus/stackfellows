@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/index.css">
     <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <title>StackFellows</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
 <div class="container fullwidth">
     <div>
         <div class="row" id="header">
-            <div class="col"><div th:replace="frags/logo"></div></div>
+            <div class="col"><div th:replace="frags/logo :: div.logo"></div></div>
             <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
         </div>
 
@@ -73,12 +74,9 @@
     </div>
 
     <div class="row footer">
-        <div class="col">JavaHaus&#169;</div>
-        <div class="col icons">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-github"></i>
-
+        <div th:replace="/frags/logo :: div.haus"></div>
+        <div class="icons">
+            <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 </div>
