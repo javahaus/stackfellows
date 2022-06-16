@@ -189,6 +189,9 @@ img {
     border-radius: .3em;
     background-color: orangered;
 }
+.logoutButton:hover{
+    color: white;
+}
 
 .mainIMG{
     margin-bottom: 3em;
@@ -215,12 +218,14 @@ legend{
 
 .footer{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: burlywood;
     height: 5vh;
 }
 .icons{
     display: flex;
+    width: max-content;
     justify-content: right;
     margin-right: 1em;
     font-size: 2rem;
@@ -270,4 +275,12 @@ textarea, .card-text{
 .postGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+i:hover, a:hover{
+    color: orangered;
+}
+
+.haus{
+    width: max-content;
 }

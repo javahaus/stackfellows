@@ -1,32 +1,37 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="/profile.css" rel="stylesheet" type="text/css" />
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="/aboutus.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <title>StackFellows Developers</title>
 </head>
 
 <body>
 
-<div class="container" id="fullwidth">
-    <div class="row" id="header">
-        <div class="col">Logo/Icon</div>
-        <div class="col textaligncenter">Future: Search Tool?</div>
-    </div>
+<div class="container fullwidth">
+    <div>
+        <div class="row" id="header">
+            <div class="col"><div class="logo"><a href="/index"><img src="/images/stackfellowsLogo3.png"></a><span class="stack">Stack</span><span
+                    class="fellows">Fellows</span></div></div>
+            <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
+        </div>
 
-    <div class="row" id="navbar">
-        <div class="col textaligncenter"><a href="/index">Home</a></div>
-        <div class="col textaligncenter"><a href="/myProfile">Profile</a></div>
-        <div class="col textaligncenter">[ About Us ]</div>
+        <div class="row" id="navbar">
+            <div class="col"><a href="/index">Home</a></div>
+            <div class="col"><a href="/myProfile">Profile</a></div>
+            <div class="col">[About Us]</div>
+        </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
                     <img src="/images/jon-rumsey.jpg" width="220px" />
                     <h5 class="card-title">Jon Rumsey</h5>
@@ -35,69 +40,108 @@
                         administrator. I gained a keen interest in programming when I was learning Powershell to
                         help complete various administrative tasks, and now I enjoy working with Java, C#, and other
                         languages and frameworks.</p>
-                    <a href="https://www.linkedin.com/in/jonathan-rumsey-wa"
-                       class="card-link">linkedin.com/in/jonathan-rumsey-wa</a>
-                    <a href="https://github.com/nojronatron"
-                       class="card-link">github.com/nojronatron</a>
+                    <div class="profile-icons">
+                        <div class="links">
+                            <a href="https://www.linkedin.com/in/jonathan-rumsey-wa" class="card-link"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/jonathan-rumsey-wa" class="card-link">https://www.linkedin.com/in/jonathan-rumsey-wa</a>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/nojronatron" class="card-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/nojronatron" class="card-link">https://github.com/nojronatron</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <img src="/images/jon-rumsey.jpg" width="220px" />
-                    <h5 class="card-title">Jon Rumsey</h5>
+                    <img src="/images/chuck-altopiedi.jpg" width="220px" />
+                    <h5 class="card-title">Chuck Altopiedi</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Software Developer</h6>
-                    <p class="card-text">I am a certified software test engineer and an experienced systems
-                        administrator. I gained a keen interest in programming when I was learning Powershell to
-                        help complete various administrative tasks, and now I enjoy working with Java, C#, and other
-                        languages and frameworks.</p>
-                    <a href="https://www.linkedin.com/in/jonathan-rumsey-wa"
-                       class="card-link">linkedin.com/in/jonathan-rumsey-wa</a>
-                    <a href="https://github.com/nojronatron"
-                       class="card-link">github.com/nojronatron</a>
+                    <p class="card-text">My name is Chuck Altopiedi, I live in Pittsburgh, PA.  I have two undergraduate
+                        degrees that I have hardly used and am now a software developer.  I worked in the casino industry
+                        for 10 years before I decided to make a meaningful change in my life.  After exploring many options
+                        I found that I very much enjoyed coding  while doing small projects on my raspberry pi as a hobby.
+                        I self taught until I realized I needed instruction and found Code fellows. I look forward to finishing
+                        and getting into the industry, hopefully in gaming or robotics.</p>
+                    <div class="profile-icons">
+                        <div class="links">
+                            <a href="https://www.linkedin.com/in/chuckaltopiedi/" class="card-link"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/chuckaltopiedi/" class="card-link">https://www.linkedin.com/in/chuckaltopiedi/</a>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/ChuckAlto" class="card-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/ChuckAlto" class="card-link">https://github.com/ChuckAlto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/jason-wilson.jpeg" width="220px" />
+                    <h5 class="card-title">Jason Wilson</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Software Developer</h6>
+                    <p class="card-text">I am a software developer with a background in electronic systems, where I
+                        worked on Navigational Aids and radio transmission for Air traffic controllers and pilots. While
+                        working in my last career, I realized that I desired to be in a field of development to the digital
+                        world. Expanding awareness is directly proportional to knowledge. Since programming holds nearly infinite
+                        amounts of expansion and discovery, the digital world functions just the same and I want to be amongst
+                        those who’ve help to create it.</p>
+                    <div class="profile-icons">
+                        <div class="links">
+                            <a href="https://www.linkedin.com/in/jason-wilson-5b5baa1a8/" class="card-link"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/jason-wilson-5b5baa1a8/" class="card-link">https://www.linkedin.com/in/jason-wilson-5b5baa1a8/</a>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/WilsonJhub" class="card-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/WilsonJhub" class="card-link">https://github.com/WilsonJhub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <img src="/images/jon-rumsey.jpg" width="220px" />
-                    <h5 class="card-title">Jon Rumsey</h5>
+                    <img src="/images/roger-reyes.jpg" width="220px" />
+                    <h5 class="card-title">Roger Reyes</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Software Developer</h6>
-                    <p class="card-text">I am a certified software test engineer and an experienced systems
-                        administrator. I gained a keen interest in programming when I was learning Powershell to
-                        help complete various administrative tasks, and now I enjoy working with Java, C#, and other
-                        languages and frameworks.</p>
-                    <a href="https://www.linkedin.com/in/jonathan-rumsey-wa"
-                       class="card-link">linkedin.com/in/jonathan-rumsey-wa</a>
-                    <a href="https://github.com/nojronatron"
-                       class="card-link">github.com/nojronatron</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <img src="/images/jon-rumsey.jpg" width="220px" />
-                    <h5 class="card-title">Jon Rumsey</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Software Developer</h6>
-                    <p class="card-text">I am a certified software test engineer and an experienced systems
-                        administrator. I gained a keen interest in programming when I was learning Powershell to
-                        help complete various administrative tasks, and now I enjoy working with Java, C#, and other
-                        languages and frameworks.</p>
-                    <a href="https://www.linkedin.com/in/jonathan-rumsey-wa"
-                       class="card-link">linkedin.com/in/jonathan-rumsey-wa</a>
-                    <a href="https://github.com/nojronatron"
-                       class="card-link">github.com/nojronatron</a>
+                    <p class="card-text">Hi, my name is Roger Reyes.
+                        I am a Software Developer. Prior to this I was in the Army for 7 years as a satellite
+                        communications technician. In that field I worked on large scale operations that spanned
+                        the pacific region in Japan. Working in that field I've been able to improve my adaptability
+                        skills by constantly working on new and foreign equipment. Now that I'm stepping into
+                        Software Development which is a new found passion my drive and interest in the field has
+                        greatly helped my growth in learning different languages. I am currently looking to work
+                        for a tech company that can fuel my ambitions and push me ever deeper into the giant coding
+                        world.
+                    </p>
+                    <div class="profile-icons">
+                        <div class="links">
+                            <a href="https://www.linkedin.com/in/rogermreyes/" class="card-link"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/rogermreyes/" class="card-link">https://www.linkedin.com/in/rogermreyes/</a>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/RogerMReyes" class="card-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/RogerMReyes" class="card-link">https://github.com/RogerMReyes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <div class="row fullwidth">
-        <div class="col-1">LogoLeft?</div>
+    <div class="row footer">
+        <div class="haus"><span class="stack">Java</span><span class="fellows">Haus<i class="devicon-java-plain"></i></span></div>
+        <div class="icons">
+            <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
+        </div>
     </div>
 </div>
 

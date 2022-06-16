@@ -8,33 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/profile.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <title>My Profile</title>
 </head>
 <body>
 
 <div class="container fullwidth">
     <div>
-    <div class="row" id="header">
-        <div class="col"><div th:replace="frags/logo"></div></div>
-        <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
-    </div>
+        <div class="row" id="header">
+            <div class="col"><div th:replace="frags/logo :: div.logo"></div></div>
+            <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
+        </div>
 
-    <div class="row" id="navbar">
-        <div class="col"><a href="/index">Home</a></div>
-        <div class="col">[Profile]</a></div>
-        <div class="col"><a href="/aboutus.html">About Us</a></div>
-    </div>
+        <div class="row" id="navbar">
+            <div class="col"><a href="/index">Home</a></div>
+            <div class="col">[Profile]</a></div>
+            <div class="col"><a href="/aboutus.html">About Us</a></div>
+        </div>
     </div>
     <div>
     <div class="row tempverytall">
         <div class="col">
             <div class="userInfo">
                 <h2>Account Information</h2>
-                <p th:text="${user.firstName}"></p>
-                <p th:text="${user.lastName}"></p>
-                <p th:text="${user.isAlum}"></p>
-                <p th:text="${user.email}"></p>
-                <p th:text="${user.bio}"></p>
+                <h6>First Name: </h6><p th:text="${user.firstName}"></p>
+                <h6>Last Name: </h6><p th:text="${user.lastName}"></p>
+                <p th:if="${user.isAlum}">Code Fellows Alumni</p>
+                <h6>Email: </h6><p th:text="${user.email}"></p>
+                <h6>Bio: </h6><p th:text="${user.bio}"></p>
             </div>
         </div>
         <div class="col">
@@ -92,12 +93,9 @@
     </form>
     </div>
     <div class="row footer">
-        <div class="col">JavaHaus&#169;</div>
-        <div class="col icons">
-        <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-github"></i>
-
+        <div th:replace="/frags/logo :: div.haus"></div>
+        <div class="icons">
+            <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 </div>
