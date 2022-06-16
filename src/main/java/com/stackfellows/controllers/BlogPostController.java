@@ -7,13 +7,17 @@ import com.stackfellows.repos.AppUserRepo;
 import com.stackfellows.repos.CommentRepo;
 import com.stackfellows.repos.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.*;
+import java.lang.module.ResolutionException;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 
@@ -64,15 +68,32 @@ public class BlogPostController {
     }
 
     @PostMapping("/postquestions")
-    public RedirectView postAQuestion(String title, String body, String codesnippet, Principal principal){
+    public RedirectView postAQuestion(RedirectAttributes error, String title, String body, String codesnippet, Principal principal){
         // create a new Post object, concatenate the code snippet with the text body, store to db, return blogpost page
+        String errorMessage = "Code snippet must be 255 characters or less.";
+
+        if(codesnippet.length() > 255){
+            error.addFlashAttribute("lengthError", errorMessage);
+
+            return new RedirectView("/index");
+        }
+
         String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
         String username = principal.getName();
         AppUser user = appUserRepo.findByUsername(username);
         Post newPost = new Post(title, bodyFullText, user);
         postRepo.save(newPost);
+
         return new RedirectView("/blogpost/" + newPost.getId());
     }
+
+
+    // Custom 404 exception
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public static class ResourceNotFoundException extends RuntimeException{
+        ResourceNotFoundException(String message) {super(message); }
+    }
+
 
     @PutMapping("/editpost")
     public RedirectView editUserPost(String title, String body, String codesnippet, Long postid){
