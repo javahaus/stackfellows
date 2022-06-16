@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/profile.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
     <title>My Profile</title>
 </head>
 <body>
@@ -14,14 +15,14 @@
 <div class="container fullwidth">
     <div>
     <div class="row" id="header">
-        <div class="col">Logo/Icon</div>
-        <div class="col textaligncenter">Future: Search Tool?</div>
+        <div class="col"><div th:replace="frags/logo"></div></div>
+        <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
     </div>
 
     <div class="row" id="navbar">
-        <div class="col textaligncenter"><a href="/index">Home</a></div>
-        <div class="col textaligncenter"><a href="/myProfile">Profile</a></div>
-        <div class="col textaligncenter"><a href="/index">About Us</a></div>
+        <div class="col"><a href="/index">Home</a></div>
+        <div class="col">[Profile]</a></div>
+        <div class="col"><a href="/aboutus.html">About Us</a></div>
     </div>
     </div>
     <div>
@@ -64,6 +65,7 @@
 
 
 <!--Form to Update User Info-->
+        <h2>Update Account Information</h2>
     <form action="/updateAccount" th:method="put">
         <fieldset>
             <label for="firstName">First Name</label>
@@ -90,7 +92,13 @@
     </form>
     </div>
     <div class="row footer">
-        <div class="col-1">LogoLeft?</div>
+        <div class="col">JavaHaus&#169;</div>
+        <div class="col icons">
+        <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-github"></i>
+
+        </div>
     </div>
 </div>
 

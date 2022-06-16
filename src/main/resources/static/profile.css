@@ -5,13 +5,13 @@ html, body {
     background-color: #00001c;
 }
 
-
-.textaligncenter {
-    text-align: center;
+h2{
+    text-decoration: underline;
 }
 
+
 .fullwidth {
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,17 +26,11 @@ html, body {
     height: max-content;
 }
 
-#header{
-    height: 5vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 #navbar{
     background-color: burlywood;
     margin-bottom: 2em;
     padding: .5em 0;
+    text-align: center;
 }
 
 ul{
@@ -73,6 +67,15 @@ input{
     background-color: burlywood;
     height: 5vh;
 }
+.icons{
+    display: flex;
+    justify-content: right;
+    margin-right: 1em;
+    font-size: 2rem;
+}
+i{
+    margin-left: 0.5em;
+}
 
 .userInfo{
     padding: 1em;
@@ -81,16 +84,41 @@ input{
     height: max-content;
 }
 
-h2{
-    text-decoration: underline;
-}
 
+/*Links CSS*/
 a{
     text-decoration: none;
     color: black;
 }
-
 a:hover{
     color: blue;
+}
+
+/*Logo CSS*/
+.stack{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.fellows{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: orangered;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logoutCont{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.logoutButton{
+    width: max-content;
+    height: max-content;
+    padding: .2em;
+    border-radius: .3em;
+    background-color: orangered;
 }
 
