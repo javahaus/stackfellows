@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="/index.css">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+    >
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,20 +19,47 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Home</h1>
-<a href="/myProfile">Profile</a>
+
+<div class="container" id="fullwidth">
+    <div class="row" id="header">
+        <div class="col">Logo/Icon</div>
+        <div class="col textaligncenter">Future: Search Tool?</div>
+    </div>
+
+    <div class="row" id="navbar">
+        <div class="col textaligncenter"><a href="/index">Home</a></div>
+        <div class="col textaligncenter"><a href="/myProfile">Profile</a></div>
+        <div class="col textaligncenter"><a href="/index">About Us</a></div>
+    </div>
+    <h1>Home</h1>
+    <a href="/myProfile">Profile</a>
+
+
+
+
 <form action="/postquestions" method="post" >
     <fieldset>
         <legend>add Post</legend>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-        <label for="body">Body</label>
-        <input type="text" name="body" id="body">
-        <label for="codesnippet">Paste in any Code you wish to share</label>
-        <textarea id="codesnippet" name="codesnippet" rows="15" cols="30"></textarea>
+        <div class="postTotal">
+        <div class="postOne">
+            <div class="title">
+                <label class="titleLabel" for="title">Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="body">
+                <label class="bodyLabel" for="body">Body</label>
+                <input type="text" name="body" id="body">
+            </div>
+        </div>
+        <div class="codesnippet postTwo">
+<!--            <label for="codesnippet">Paste in any Code you wish to share</label>-->
+            <textarea id="codesnippet" name="codesnippet" rows="15" cols="60"></textarea>
+        </div>
+        </div>
         <input type="submit" value="submit">
     </fieldset>
 </form>
+
 
 <div th:if="${posts != null}">
     <h3>List of all blog posts</h3>
@@ -41,5 +75,11 @@
 </div>
 
 <a href="/logout">Log Out</a>
+
+    <div class="row fullwidth">
+        <div class="col-1">LogoLeft?</div>
+    </div>
+</div>
+
 </body>
 </html>
