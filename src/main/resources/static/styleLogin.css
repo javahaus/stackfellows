@@ -1,0 +1,40 @@
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+    background-color: bisque !important;
+}
+
+div {
+
+}
+
+#navbar {
+    background-color: burlywood !important;
+}
+
+.textaligncenter {
+  text-align: center;
+}
+
+.fullwidth {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color; burlywood !important;
+  text-align: left;
+}
+
+.allleft {
+  text-align: left;
+}
+
+.tempverytall {
+  height: 150px;
+}
+
+.footer {
+    background-color: burlywood !important;
+    height: 5vh;
+}
