@@ -46,7 +46,7 @@ description of CRUD operations.
 
 ### Domain Modeling
 
-![Domain Architecture Design](Imgs/JavaHaus-domain-model-architecture.jpg)
+![Domain Architecture Design](Imgs/stackfellows-domain-architecture.jpg)
 
 ## The Team
 
