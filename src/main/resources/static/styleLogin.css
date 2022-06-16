@@ -21,19 +21,22 @@ div {
 
 .fullwidth {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    display: flex;
-    align-items: left;
-    background-color: burlywood;
-    height: 5vh;
+        align: center;
+        background-color: burlywood;
+        height: 5vh;
     margin-top: 2em;
 
 }
 
-.allleft {
-  text-align: left;
+#brands {
+    align: left;
 }
+
+i{
+    margin-left: 0.5em;
+    align: right;
+}
+
 
 .tempverytall {
     height: max-content;

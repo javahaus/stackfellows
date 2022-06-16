@@ -133,11 +133,11 @@ public class AppUser implements UserDetails {
         this.email = email;
     }
 
-    public boolean isAlum() {
+    public boolean getIsAlum() {
         return isAlum;
     }
 
-    public void setAlum(boolean alum) {
+    public void setIsAlum(boolean alum) {
         isAlum = alum;
     }
 
