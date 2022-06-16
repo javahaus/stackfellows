@@ -67,12 +67,14 @@ input{
 
 .footer{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: burlywood;
     height: 5vh;
 }
 .icons{
     display: flex;
+    width: max-content;
     justify-content: right;
     margin-right: 1em;
     font-size: 2rem;
@@ -180,4 +182,7 @@ i:hover, a:hover{
 .post{
     border-bottom: 1px solid black;
     border-radius: .5em;
+}
+.haus{
+    width: max-content;
 }

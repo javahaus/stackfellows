@@ -66,12 +66,14 @@ input{
 
 .footer{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: burlywood;
     height: 5vh;
 }
 .icons{
     display: flex;
+    width: max-content;
     justify-content: right;
     margin-right: 1em;
     font-size: 2rem;
@@ -196,4 +198,7 @@ textarea{
 }
 i:hover, a:hover{
     color: orangered;
+}
+.haus{
+    width: max-content;
 }
