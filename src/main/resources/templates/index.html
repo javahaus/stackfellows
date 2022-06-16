@@ -50,6 +50,7 @@
                     <div class="codesnippet postTwo">
                         <p>Code</p>
                         <textarea id="codesnippet" name="codesnippet" rows="10" cols="60"></textarea>
+                        <p th:if="${lengthError}" th:text="${lengthError}"></p>
                     </div>
                 </div>
             </fieldset>
