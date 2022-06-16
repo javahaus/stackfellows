@@ -17,24 +17,26 @@
 </head>
 <body>
 
-<div class="container" id="fullwidth">
-    <div class="row" id="header">
-        <div class="col"><div th:replace="frags/logo :: div.logo"></div></div>
+<div class="container fullwidth">
+    <div>
+        <div class="row" id="header">
+            <div class="col">
+                <div th:replace="frags/logo :: div.logo"></div>
+            </div>
+        </div>
 
-
+        <div class="row" id="navbar">
+            <div class="col"><a href="/index">Home</a></div>
+            <div class="col"><a href="/myProfile">Profile</a></div>
+            <div class="col"><a href="/aboutus.html">About Us</a></div>
+        </div>
     </div>
 
-    <div class="row" id="navbar">
-        <div class="col extaligncenter">Home</div>
-        <div class="col textaligncenter">Username Profile</div>
-        <div class="col textaligncenter">About Us</div>
-    </div>
-
-    <div class="row tempverytall">
-        <div class="col"></div>
-        <div class="col"></div>
+    <div class="row">
+        <div class="col imgCol"><img class="mainIMG" src="/images/loginPic.jpg"></div>
         <div class="col" id="login">
-            <h1>Login</h1> <h2>(or sign up <a href="/signup">here</a>)</h2>
+            <h1>Login</h1>
+            <h5><a href="/signup">Or Sign Up Here</a></h5>
             <form action="/login"  method="post">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username">
@@ -42,23 +44,15 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password">
                 <!--    <input type="submit" value="login">-->
-                <input class="btn btn-primary" type="submit" value="Log In">
+                <input class="btn" type="submit" value="Log In">
             </form>
         </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
     </div>
 
-    <div class="row fullwidth">
-        <div class="row footer">
-            <div th:replace="/frags/logo :: div.haus"></div>
-            <div class="col icons">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-github"></i>
-
-            </div>
+    <div class="row footer">
+        <div th:replace="/frags/logo :: div.haus"></div>
+        <div class="icons">
+            <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 </div>

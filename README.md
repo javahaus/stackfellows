@@ -60,4 +60,5 @@ Git-fu Master [Jon Rumsey](https://github.com/nojronatron)
 
 ## References and Attributions
 
-Thymeleaf code to maintain plain text line feeds from [Stack Overflow](https://stackoverflow.com/questions/49849839/spring-thymeleaf-text-next-line)
+Thymeleaf code to maintain plain text line feeds from [Stack Overflow](https://stackoverflow.com/questions/49849839/spring-thymeleaf-text-next-line)  
+[Login Picture](https://www.pexels.com/photo/photo-of-people-looking-on-laptop-3182750/)
