@@ -1,10 +1,35 @@
-html, body{
-    /*background-color: #408ec6;*/
-    margin: auto;
+html, body {
     height: 100%;
-    border: 5px solid black;
-    background: beige;
+    width: 100%;
+    background-color: bisque !important;
 }
+
+div {
+    border: rgba(0, 0, 255, 0.63) dashed 1px;
+}
+
+.textaligncenter {
+    text-align: center;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.allleft {
+    text-align: left;
+}
+
+.tempverytall {
+    height: 150px;
+}
+/*html, body{*/
+/*    !*background-color: #408ec6;*!*/
+/*    margin: auto;*/
+/*    height: 100%;*/
+/*    !*border: 5px solid black;*!*/
+/*    background: beige;*/
+/*}*/
 
 h1{
     background-blend-mode: normal;
@@ -18,7 +43,7 @@ h1{
 input[type=submit] {
     background-color: #0066A2;
     color: white;
-    margin-top: 12px;
+    margin-top: auto;
     padding: 12px 20px ;
     border: none;
     border-radius: 4px;
@@ -26,17 +51,15 @@ input[type=submit] {
     float: right;
 }
 
+/*form {*/
+/*    display: grid;*/
+/*    padding: 20px 200px 20px 200px;*/
+/*    background: rgba(183, 183, 52, 0.65);*/
+/*    !*border: 1px solid #c1c1c1;*!*/
+/*    margin: 4rem auto 0 auto;*/
+/*    max-width: 700px;*/
 
-
-form {
-    display: grid;
-    padding: 20px 20px 20px 500px;
-    background: rgba(183, 183, 52, 0.65);
-    /*border: 1px solid #c1c1c1;*/
-    margin: 2rem auto 0 auto;
-    max-width: 700px;
-
-}
+/*}*/
 
 
 form input {
@@ -62,26 +85,53 @@ input {
     margin-bottom: 30px;
 }
 input:focus {
-    outline: 3px solid gold;
+    outline: 2px solid gold;
 }
 
-@media (min-width: 400px) {
-    form {
-        grid-template-columns: 200px 1fr;
-        grid-gap: 16px;
-    }
+/*@media (min-width: 400px) {*/
+/*    form {*/
+/*        grid-template-columns: 200px 1fr;*/
+/*        grid-gap: 16px;*/
+/*    }*/
 
-    label {
-        text-align: right;
-        grid-column: 1 / 2;
-    }
+/*    label {*/
+/*        text-align: right;*/
+/*        grid-column: 1 / 2;*/
+/*    }*/
 
-    input,
-    button {
-        grid-column: 2 / 3;
-    }
-}
+/*    input,*/
+/*    button {*/
+/*        grid-column: 2 / 3;*/
+/*    }*/
+/*}*/
 
-.title{
+/*.codesnippet{*/
+/*    margin: 20px 10px 9px 400px;*/
+/*    position: relative; bottom: 170px;*/
+/*}*/
 
+/*.title{*/
+/*    margin-top: 20px;*/
+/*    margin-bottom: 9px;*/
+/*    position: relative; top: 20px;*/
+/*}*/
+
+/*.titleLabel{*/
+/*    position: relative; bottom: 30px; left: 40px;*/
+
+/*}*/
+
+/*.body{*/
+
+/*    position: relative; top: 40px;*/
+/*}*/
+
+/*.bodyLabel{*/
+/*    position: relative; bottom: 30px; left: 47px;*/
+/*}*/
+
+.postTotal{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
