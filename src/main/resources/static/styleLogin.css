@@ -1,0 +1,114 @@
+
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-color: #00001c;
+}
+
+#header {
+    margin-bottom: .8%
+}
+
+#login{
+    position: relative;
+    left: -25%;
+}
+
+.haus{
+    width: max-content;
+}
+
+#navbar {
+    background-color: burlywood !important;
+}
+
+.textaligncenter {
+  text-align: center;
+}
+
+.fullwidth {
+    display: flex;
+        align: center;
+        background-color: burlywood;
+        height: 5vh;
+    margin-top: 2em;
+    position: relative;
+    left: .7%;
+
+}
+
+#brands {
+    align: left;
+}
+
+i{
+    margin-left: 0.5em;
+    align: right;
+}
+
+
+.tempverytall {
+    height: max-content;
+    background-color: bisque;
+    align-items: left;
+}
+
+#login {
+
+}
+
+
+#header{
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar{
+    background-color: burlywood;
+    margin-bottom: 2em;
+    padding: .5em 0;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: .1rem solid black ;
+    padding: .1em;
+    margin-bottom: .1em;
+    align-items: center;
+    border-radius: .5em;
+}
+
+p{
+    margin-bottom: .1em;
+}
+
+.footer {
+    background-color: burlywood !important;
+    height: 5vh;
+}
+
+input{
+    margin-bottom: .5rem;
+}
+
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    background-color: burlywood;
+    height: 5vh;
+    position:
+}
+
+.userInfo{
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: max-content;
+}
