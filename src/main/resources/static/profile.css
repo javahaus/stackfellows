@@ -168,3 +168,7 @@ i:hover, a:hover{
     width: max-content;
 }
 
+.comment{
+    overflow: scroll;
+}
+

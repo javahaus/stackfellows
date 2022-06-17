@@ -196,4 +196,12 @@ i:hover, a:hover{
     border-radius: 1em;
     padding: 1em;
     margin-right: 1em;
+    overflow: scroll;
+}
+.comment{
+    background-color: beige;
+    border-radius: 1em;
+    padding: 1em;
+    margin-right: 1em;
+    overflow: scroll;
 }
