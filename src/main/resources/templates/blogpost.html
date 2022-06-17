@@ -82,7 +82,7 @@
                 <input class="btn" type="submit" value="^">
             </form>
             <h5 style="display: inline;" th:text="'Upvotes: ' + ${comment.votes}"></h5>
-            <div style="white-space: pre;" th:text="${comment.body}"></div>
+            <div class="comment" style="white-space: pre;" th:text="${comment.body}"></div>
             <h6 th:text="'- ' + ${comment.appUser.username}"></h6>
             <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/deleteComment"
                   th:method="delete">
@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="row footer">
-        <div th:replace="/frags/logo :: div.haus"></div>
+        <div th:replace="frags/logo :: div.haus"></div>
         <div class="icons">
             <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
         </div>
