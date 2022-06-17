@@ -191,3 +191,9 @@ i:hover, a:hover{
     border-bottom: 2px solid black;
     margin-bottom: 1em;
 }
+.postStyle{
+    background-color: beige;
+    border-radius: 1em;
+    padding: 1em;
+    margin-right: 1em;
+}

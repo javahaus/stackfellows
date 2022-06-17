@@ -11,6 +11,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(length = 65535)
     private String body;
     private int votes = 0;
 

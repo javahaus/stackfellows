@@ -70,13 +70,13 @@ public class BlogPostController {
     @PostMapping("/postquestions")
     public RedirectView postAQuestion(RedirectAttributes error, String title, String body, String codesnippet, Principal principal){
         // create a new Post object, concatenate the code snippet with the text body, store to db, return blogpost page
-        String errorMessage = "Code snippet must be 255 characters or less.";
-
-        if(codesnippet.length() > 255){
-            error.addFlashAttribute("lengthError", errorMessage);
-
-            return new RedirectView("/index");
-        }
+//        String errorMessage = "Code snippet must be 255 characters or less.";
+//
+//        if(codesnippet.length() > 255){
+//            error.addFlashAttribute("lengthError", errorMessage);
+//
+//            return new RedirectView("/index");
+//        }
 
         String bodyFullText = this.concatPostAndSnippet(body, codesnippet);
         String username = principal.getName();

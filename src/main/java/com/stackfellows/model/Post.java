@@ -11,6 +11,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     private String title;
+    @Column(length = 65535)
     private String body;
     private boolean answered;
     private int votes = 0;
