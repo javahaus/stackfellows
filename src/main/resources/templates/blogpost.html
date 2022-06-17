@@ -47,17 +47,17 @@
                 <div class="row">
                     <div class="col postLeft">
                         <div>
-                            <label for="title">Title</label>
+                            <label for="title">Title&emsp;&emsp;</label>
                             <input type="text" name="title" id="title">
                         </div>
                         <div>
-                            <label for="postBody">Body</label>
+                            <label for="postBody">Question</label>
                             <input type="text" name="body" id="postBody">
                         </div>
                     </div>
                     <div class="col">
                         <p>Code</p>
-                        <textarea id="codesnippet" name="codesnippet" rows="4" cols="30"></textarea>
+                        <textarea id="codesnippet" name="codesnippet" rows="4" cols="60"></textarea>
                         <input type="hidden" th:value="${postInfo.id}" name="postid">
                         <input class="btn" type="submit" value="edit">
                     </div>
@@ -66,7 +66,7 @@
         </form>
 
         <!--Post Comment Section-->
-        <form action="/postComment" method="post">
+        <form class="section" action="/postComment" method="post">
             <fieldset>
                 <legend><h2>Add a Comment</h2></legend>
                 <textarea rows="3" cols="40" name="body" id="body"> </textarea>
@@ -89,7 +89,7 @@
                 <input type="hidden" th:value="${comment.id}" name="id">
                 <input class="btn" type="submit" value="Delete">
             </form>
-            <form th:if="${sessionUsername.equals(comment.appUser.username)}" action="/editComment" th:method="put">
+            <form class="section" th:if="${sessionUsername.equals(comment.appUser.username)}" action="/editComment" th:method="put">
                 <textarea rows="1" cols="40" name="body" id="commentBody"> </textarea>
                 <input type="hidden" th:value="${postInfo.id}" name="postid" id="postid">
                 <input type="hidden" th:value="${comment.id}" name="id">
