@@ -37,11 +37,11 @@
         <!--Post Section-->
         <div class="row post">
             <p class="col-3" th:text="${postInfo.title}"></p>
-            <p class="col" style="white-space: pre;" th:text="${postInfo.body}"></p>
+            <p class="col postStyle" style="white-space: pre;" th:text="${postInfo.body}"></p>
         </div>
 
         <!--Edit Post-->
-        <form th:if="${sessionUsername.equals(postInfo.appUser.username)}" action="/editpost" th:method="put">
+        <form class="section" th:if="${sessionUsername.equals(postInfo.appUser.username)}" action="/editpost" th:method="put">
             <fieldset>
                 <legend><h2>Edit Post</h2></legend>
                 <div class="row">
