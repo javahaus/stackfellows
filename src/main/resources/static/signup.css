@@ -5,6 +5,10 @@ html, body {
     background-color: #00001c;
 }
 
+h1{
+    text-decoration: underline;
+    margin-bottom: 2em;
+}
 h2{
     text-decoration: underline;
 }
@@ -15,7 +19,6 @@ h5{
 
 
 .fullwidth {
-    min-width: 960px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -132,10 +135,9 @@ a:hover{
     color: white;
 }
 .btn{
-    width: 6em;
     border: 1px solid orangered;
     padding: .1em .2em;
-    font-size: .8rem;
+    font-size: 1.2rem;
 }
 .btn:hover{
     background-color: orangered;
@@ -189,28 +191,22 @@ i:hover, a:hover{
     width: max-content;
 }
 
-form{
+.sign{
+    background-color: blanchedalmond;
     display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.imgCol{
-    display: flex;
-    justify-content: center;
-}
-img{
-    width: auto;
-    height: auto;
-    max-height: 800px;
-}
-
-#login{
-    width: max-content;
-    height: max-content;
-    margin: auto;
-    display: flex;
+    width: 30em;
+    margin: 0 auto;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    border: 5px solid black;
+    border-radius: 1em;
+}
+.signSheet{
+    display: flex;
+    justify-content: space-between;
+}
+
+form{
+    width: 80%;
+
 }

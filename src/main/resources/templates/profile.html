@@ -27,70 +27,73 @@
         </div>
     </div>
     <div>
-    <div class="row tempverytall">
-        <div class="col">
-            <div class="userInfo">
-                <h2>Account Information</h2>
-                <h6>First Name: </h6><p th:text="${user.firstName}"></p>
-                <h6>Last Name: </h6><p th:text="${user.lastName}"></p>
-                <p th:if="${user.isAlum}">Code Fellows Alumni</p>
-                <h6>Email: </h6><p th:text="${user.email}"></p>
-                <h6>Bio: </h6><p th:text="${user.bio}"></p>
+        <div class="row tempverytall">
+            <div class="col">
+                <div class="userInfo">
+                    <h2>Account Information</h2>
+                    <h6>First Name: </h6><p th:text="${user.firstName}"></p>
+                    <h6>Last Name: </h6><p th:text="${user.lastName}"></p>
+                    <p th:if="${user.isAlum}">Code Fellows Alumni</p>
+                    <h6>Email: </h6><p th:text="${user.email}"></p>
+                    <h6>Bio: </h6><p th:text="${user.bio}"></p>
+                </div>
+            </div>
+            <div class="col">
+                <h2>My Posts</h2>
+                <ul th:each="post : ${postList}">
+                    <a th:href="'/blogpost/' + ${post.id}" th:text="${post.title}"></a>
+                    <form action="/deletePost" th:method="delete">
+                        <input type="hidden" th:value="${post.id}" name="id" id="postid">
+                        <input class="customButton" type="submit" value="Delete">
+                    </form>
+                </ul>
             </div>
         </div>
-        <div class="col">
-            <h2>My Posts</h2>
-            <ul th:each="post : ${postList}">
-                <a th:href="'/blogpost/' + ${post.id}" th:text="${post.title}"></a>
-                <form action="/deletePost" th:method="delete">
-                    <input type="hidden" th:value="${post.id}" name="id" id="postid">
-                    <input class="customButton" type="submit" value="Delete">
+        
+        <!--Form to Update User Info-->
+        <div class="row">
+            <div class="col"><h2>Update Account Information</h2>
+                <form action="/updateAccount" th:method="put">
+                    <fieldset>
+                        <label for="firstName">First Name</label>
+                        <br>
+                        <input type="text" name="firstName" id="firstName" required>
+                        <br>
+                        <label for="lastName">Last Name</label>
+                        <br>
+                        <input type="text" name="lastName" id="lastName" required>
+                        <br>
+                        <label for="email">Email</label>
+                        <br>
+                        <input type="text" name="email" id="email" required>
+                        <br>
+                        <label for="isAlum">Code Fellows Alum?</label>
+                        <input type="checkbox" name="isAlum" id="isAlum">
+                        <br>
+                        <label for="bio">Bio</label>
+                        <br>
+                        <input type="text" name="bio" id="bio" required>
+                        <br>
+                        <input class="customButton" type="submit" value="Update">
+                    </fieldset>
                 </form>
-            </ul>
-        </div>
-    </div>
-<!--List of Comments-->
-    <div>
-        <h2>My Comments</h2>
-        <ul th:each="comment : ${commentList}">
-            <div>
-                <a th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
-                <p th:text="'- ' + ${comment.post.appUser.username}"></p>
             </div>
-            <form action="/deleteComment" th:method="delete">
-                <input type="hidden" th:value="${comment.id}" name="id" id="commentid">
-                <input class="customButton" type="submit" value="Delete">
-            </form>
-        </ul>
-    </div>
 
-
-<!--Form to Update User Info-->
-        <h2>Update Account Information</h2>
-    <form action="/updateAccount" th:method="put">
-        <fieldset>
-            <label for="firstName">First Name</label>
-            <br>
-            <input type="text" name="firstName" id="firstName" required>
-            <br>
-            <label for="lastName">Last Name</label>
-            <br>
-            <input type="text" name="lastName" id="lastName" required>
-            <br>
-            <label for="email">Email</label>
-            <br>
-            <input type="text" name="email" id="email" required>
-            <br>
-            <label for="isAlum">Code Fellows Alum?</label>
-            <input type="checkbox" name="isAlum" id="isAlum">
-            <br>
-            <label for="bio">Bio</label>
-            <br>
-            <input type="text" name="bio" id="bio" required>
-            <br>
-            <input class="customButton" type="submit" value="Update">
-        </fieldset>
-    </form>
+            <!--List of Comments-->
+            <div class="col">
+                <h2>My Comments</h2>
+                <ul th:each="comment : ${commentList}">
+                    <div>
+                        <a th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
+                        <p th:text="'- ' + ${comment.post.appUser.username}"></p>
+                    </div>
+                    <form action="/deleteComment" th:method="delete">
+                        <input type="hidden" th:value="${comment.id}" name="id" id="commentid">
+                        <input class="customButton" type="submit" value="Delete">
+                    </form>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="row footer">
         <div th:replace="/frags/logo :: div.haus"></div>
