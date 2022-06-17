@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="/profile.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/9f53d2a1d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <title>My Profile</title>
+</head>
+<body>
+
+<div class="container fullwidth">
+    <div>
+        <div class="row" id="header">
+            <div class="col"><div th:replace="frags/logo :: div.logo"></div></div>
+            <div class="col logoutCont"><a class="logoutButton" href="/logout">Log Out</a></div>
+        </div>
+
+        <div class="row" id="navbar">
+            <div class="col"><a href="/index">Home</a></div>
+            <div class="col">[Profile]</a></div>
+            <div class="col"><a href="/aboutus.html">About Us</a></div>
+        </div>
+    </div>
+    <div>
+        <div class="row tempverytall">
+            <div class="col">
+                <div class="userInfo">
+                    <h2>Account Information</h2>
+                    <h6>First Name: </h6><p th:text="${user.firstName}"></p>
+                    <h6>Last Name: </h6><p th:text="${user.lastName}"></p>
+                    <p th:if="${user.isAlum}">Code Fellows Alumni</p>
+                    <h6>Email: </h6><p th:text="${user.email}"></p>
+                    <h6>Bio: </h6><p th:text="${user.bio}"></p>
+                </div>
+            </div>
+            <div class="col">
+                <h2>My Posts</h2>
+                <ul th:each="post : ${postList}">
+                    <a th:href="'/blogpost/' + ${post.id}" th:text="${post.title}"></a>
+                    <form action="/deletePost" th:method="delete">
+                        <input type="hidden" th:value="${post.id}" name="id" id="postid">
+                        <input class="customButton" type="submit" value="Delete">
+                    </form>
+                </ul>
+            </div>
+        </div>
+        
+        <!--Form to Update User Info-->
+        <div class="row">
+            <div class="col"><h2>Update Account Information</h2>
+                <form action="/updateAccount" th:method="put">
+                    <fieldset>
+                        <label for="firstName">First Name</label>
+                        <br>
+                        <input type="text" name="firstName" id="firstName" required>
+                        <br>
+                        <label for="lastName">Last Name</label>
+                        <br>
+                        <input type="text" name="lastName" id="lastName" required>
+                        <br>
+                        <label for="email">Email</label>
+                        <br>
+                        <input type="text" name="email" id="email" required>
+                        <br>
+                        <label for="isAlum">Code Fellows Alum?</label>
+                        <input type="checkbox" name="isAlum" id="isAlum">
+                        <br>
+                        <label for="bio">Bio</label>
+                        <br>
+                        <input type="text" name="bio" id="bio" required>
+                        <br>
+                        <input class="customButton" type="submit" value="Update">
+                    </fieldset>
+                </form>
+            </div>
+
+            <!--List of Comments-->
+            <div class="col">
+                <h2>My Comments</h2>
+                <ul th:each="comment : ${commentList}">
+                    <div>
+                        <a th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
+                        <p th:text="'- ' + ${comment.post.appUser.username}"></p>
+                    </div>
+                    <form action="/deleteComment" th:method="delete">
+                        <input type="hidden" th:value="${comment.id}" name="id" id="commentid">
+                        <input class="customButton" type="submit" value="Delete">
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div th:replace="/frags/logo :: div.haus"></div>
+        <div class="icons">
+            <a href="https://github.com/javahaus"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
