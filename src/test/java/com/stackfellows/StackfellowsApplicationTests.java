@@ -2,6 +2,7 @@ package com.stackfellows;
 
 import com.stackfellows.model.AppUser;
 import com.stackfellows.model.Comment;
+import com.stackfellows.model.Post;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,8 +12,40 @@ import static org.junit.jupiter.api.Assertions.*;
 class StackfellowsApplicationTests {
 
 	@Test
+	void testPostCanBeInstantiated() {
+		Post sut = new Post();
+		assertNotNull(sut);
+	}
+	@Test
+	void testPostFirstConstructor() {
+		String expectedTitle = "My expected title";
+		String expectedBody = "My expected body";
+		AppUser appUser = new AppUser();
+		Post sut = new Post(expectedTitle, expectedBody, appUser);
+		assertEquals(expectedTitle, sut.getTitle());
+		assertEquals(expectedBody, sut.getBody());
+		assertEquals(appUser, sut.getAppUser());
+	}
+
+	@Test
+	void testPostSecondConstructor() {
+		String expectedTitle = "My expected title";
+		String expectedBody = "My expected body";
+		boolean expectedAnswered = true;
+		int expectedVotes = 3000;
+		AppUser appUser = new AppUser();
+		Post sut = new Post(expectedTitle, expectedBody, expectedAnswered, expectedVotes, appUser);
+		assertEquals(expectedTitle, sut.getTitle());
+		assertEquals(expectedBody, sut.getBody());
+		assertEquals(expectedAnswered, sut.isAnswered());
+		assertEquals(expectedVotes, sut.getVotes());
+		assertEquals(appUser, sut.getAppUser());
+	}
+
+	@Test
 	void testPlaceholder() {
 	}
+
 	@Test
 	void testCommentConstructor() {
 		String expectedResult = "Comment title.";
