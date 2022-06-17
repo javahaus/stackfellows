@@ -142,7 +142,7 @@ a:hover{
 .postLeft{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1em;
 }
@@ -185,4 +185,9 @@ i:hover, a:hover{
 }
 .haus{
     width: max-content;
+}
+
+.section{
+    border-bottom: 2px solid black;
+    margin-bottom: 1em;
 }

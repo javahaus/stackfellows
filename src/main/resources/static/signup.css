@@ -19,7 +19,7 @@ h5{
 
 
 .fullwidth {
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,6 +75,7 @@ input{
     align-items: center;
     background-color: burlywood;
     height: 5vh;
+    margin-top: 2em;
 }
 .icons{
     display: flex;
