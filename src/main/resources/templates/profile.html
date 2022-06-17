@@ -84,7 +84,7 @@
                 <h2>My Comments</h2>
                 <ul th:each="comment : ${commentList}">
                     <div>
-                        <a th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
+                        <a style="white-space: pre;" th:href="'/blogpost/' + ${comment.post.id}" th:text="${comment.body}"></a>
                         <p th:text="'- ' + ${comment.post.appUser.username}"></p>
                     </div>
                     <form action="/deleteComment" th:method="delete">
